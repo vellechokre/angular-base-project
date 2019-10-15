@@ -74,11 +74,11 @@ import {TreeModule} from 'primeng/primeng';
 import {TreeTableModule} from 'primeng/primeng';
 
 import {AppComponent} from './app.component';
-import {AppMenuComponent, AppSubMenuComponent} from './app.menu.component';
-import {AppTopbarComponent} from './app.topbar.component';
-import {AppFooterComponent} from './app.footer.component';
-import {AppRightpanelComponent} from './app.rightpanel.component';
-import {AppInlineProfileComponent} from './app.profile.component';
+import {AppMenuComponent, AppSubMenuComponent} from './core/components/menu/app.menu.component';
+import {AppTopbarComponent} from './core/components/topbar/app.topbar.component';
+import {AppFooterComponent} from './core/components/footer/app.footer.component';
+import {AppRightpanelComponent} from './core/components/rightpanel/app.rightpanel.component';
+import {AppInlineProfileComponent} from './core/components/profile/app.profile.component';
 import {DashboardDemoComponent} from './demo/view/dashboarddemo.component';
 import {SampleDemoComponent} from './demo/view/sampledemo.component';
 import {FormsDemoComponent} from './demo/view/formsdemo.component';
@@ -98,6 +98,11 @@ import {CarService} from './demo/service/carservice';
 import {CountryService} from './demo/service/countryservice';
 import {EventService} from './demo/service/eventservice';
 import {NodeService} from './demo/service/nodeservice';
+import { BASE_URL } from './core/http/core/api.service';
+import { environment } from '../environments/environment';
+import { AuthService } from './core/services/auth/Auth.service';
+import { AuthGuardService } from './core/services/auth/AuthGuard.service';
+import { LoginComponent } from './core/components/login/login.component';
 
 @NgModule({
     imports: [
@@ -192,11 +197,15 @@ import {NodeService} from './demo/service/nodeservice';
         EmptyDemoComponent,
         FileDemoComponent,
         UtilsDemoComponent,
-        DocumentationComponent
+        DocumentationComponent,
+        LoginComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
-        CarService, CountryService, EventService, NodeService
+        CarService, CountryService, EventService, NodeService,
+        {provide: BASE_URL, useValue: environment.baseUrl},
+        AuthService,
+        AuthGuardService
     ],
     bootstrap: [AppComponent]
 })

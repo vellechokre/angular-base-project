@@ -3,11 +3,11 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { AppTopbarComponent } from './app.topbar.component';
-import { AppRightpanelComponent} from './app.rightpanel.component';
-import { AppInlineProfileComponent } from './app.profile.component';
-import { AppFooterComponent } from './app.footer.component';
-import { AppMenuComponent, AppSubMenuComponent } from './app.menu.component';
+import { AppTopbarComponent } from './core/components/topbar/app.topbar.component';
+import { AppRightpanelComponent} from './core/components/rightpanel/app.rightpanel.component';
+import { AppInlineProfileComponent } from './core/components/profile/app.profile.component';
+import { AppFooterComponent } from './core/components/footer/app.footer.component';
+import { AppMenuComponent, AppSubMenuComponent } from './core/components/menu/app.menu.component';
 
 describe('AppComponent', () => {
   beforeEach(() => {

@@ -1,5 +1,5 @@
 import {Component, OnDestroy, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
-import {AppComponent} from './app.component';
+import {AppComponent} from '../../../app.component';
 declare var jQuery: any;
 
 @Component({

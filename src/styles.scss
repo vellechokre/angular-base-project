@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
+.topbar-custom {
+    height: 56px!important;
+    &-left {
+        height: 100%!important;
+        display: flex;
+        align-items: center;
+    }
+    &-right {
+        padding: 7px!important;
+    }
+}
+
+.layout-menu-custom {
+    top: 56px!important;
+}
+
+.login-body {
+    background: none!important;
+    display: flex;
+    justify-content: center;
+}
+.layout-custom {
+    margin-left: 0px!important;
+    padding: 0px!important;
+}

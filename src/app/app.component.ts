@@ -1,4 +1,5 @@
 import {Component, AfterViewInit, ElementRef, Renderer, ViewChild, OnDestroy} from '@angular/core';
+import { AuthService } from './core/services/auth/Auth.service';
 
 enum MenuOrientation {
     STATIC,
@@ -20,9 +21,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
     layoutMode: MenuOrientation = MenuOrientation.STATIC;
 
-    darkMenu = false;
+    darkMenu = true;
 
-    profileMode = 'inline';
+    //Sanchit Mirg: 13-10-2019 Default was inline, changed it to top
+    profileMode = 'top';
 
     rotateMenuButton: boolean;
 
@@ -52,11 +54,16 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
     menuHoverActive: boolean;
 
+    isUserAuthorised: boolean = false;
+
     @ViewChild('layoutContainer') layourContainerViewChild: ElementRef;
 
     @ViewChild('layoutMenuScroller') layoutMenuScrollerViewChild: ElementRef;
 
-    constructor(public renderer: Renderer) {}
+    constructor(public renderer: Renderer, 
+        private authService: AuthService) {
+            this.isUserAuthorised = this.authService.isAuthenticated();
+        }
 
     ngAfterViewInit() {
         this.layoutContainer = <HTMLDivElement> this.layourContainerViewChild.nativeElement;

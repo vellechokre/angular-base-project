@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {trigger, state, style, transition, animate} from '@angular/animations';
 import {MenuItem} from 'primeng/primeng';
-import {AppComponent} from './app.component';
+import {AppComponent} from '../../../app.component';
 
 @Component({
     selector: 'app-menu',
@@ -20,7 +20,7 @@ export class AppMenuComponent implements OnInit {
     ngOnInit() {
         this.model = [
             {label: 'Dashboard', icon: 'dashboard', routerLink: ['/']},
-            {
+            /* {
                 label: 'Themes', icon: 'palette', badge: '6',
                 items: [
                     {label: 'Indigo - Pink', icon: 'brush', command: (event) => {this.changeTheme('indigo'); }},
@@ -36,8 +36,8 @@ export class AppMenuComponent implements OnInit {
                     {label: 'Cyan - Amber', icon: 'brush', command: (event) => {this.changeTheme('cyan'); }},
                     {label: 'Grey - Deep Orange', icon: 'brush', command: (event) => {this.changeTheme('grey'); }}
                 ]
-            },
-            {
+            }, */
+            /* {
                 label: 'Customization', icon: 'settings_application',
                 items: [
                     {label: 'Compact Size', icon: 'fiber_manual_record', command: () => this.app.layoutCompact = true},
@@ -51,7 +51,7 @@ export class AppMenuComponent implements OnInit {
                     {label: 'Inline Profile', icon: 'contacts',  command: () => this.app.profileMode = 'inline'},
                     {label: 'Top Profile', icon: 'person_pin',  command: () => this.app.profileMode = 'top'},
                 ]
-            },
+            }, */
             {
                 label: 'Components', icon: 'list', badge: '2', badgeStyleClass: 'teal-badge',
                 items: [

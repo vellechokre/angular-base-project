@@ -9,9 +9,9 @@
             'layout-menu-static-inactive': staticMenuDesktopInactive,
             'layout-menu-static-active': staticMenuMobileActive}">
 
-        <app-topbar></app-topbar>
+        <app-topbar [isUserAuthorised]="isUserAuthorised"></app-topbar>
 
-        <div class="layout-menu" [ngClass]="{'layout-menu-dark':darkMenu}" (click)="onMenuClick($event)">
+        <div *ngIf="isUserAuthorised" class="layout-menu layout-menu-custom" [ngClass]="{'layout-menu-dark':darkMenu}" (click)="onMenuClick($event)">
             <div #layoutMenuScroller class="nano">
                 <div class="nano-content menu-scroll-content">
                     <app-inline-profile *ngIf="profileMode=='inline'&&!isHorizontal()"></app-inline-profile>
@@ -20,10 +20,11 @@
             </div>
         </div>
         
-        <div class="layout-main">
+        <div class="layout-main"
+            [ngClass]="{'layout-custom': !isUserAuthorised}">
             <router-outlet></router-outlet>
             
-            <app-footer></app-footer>
+            <app-footer *ngIf="isUserAuthorised"></app-footer>
         </div>
         
         <app-rightpanel></app-rightpanel>

@@ -14,9 +14,11 @@ import {ChartsDemoComponent} from './demo/view/chartsdemo.component';
 import {FileDemoComponent} from './demo/view/filedemo.component';
 import {UtilsDemoComponent} from './demo/view/utilsdemo.component';
 import {DocumentationComponent} from './demo/view/documentation.component';
+import { AuthGuardService } from './core/services/auth/AuthGuard.service';
+import { LoginComponent } from './core/components/login/login.component';
 
 export const routes: Routes = [
-    {path: '', component: DashboardDemoComponent},
+    {path: '', component: DashboardDemoComponent,canActivate: [AuthGuardService]},
     {path: 'sample', component: SampleDemoComponent},
     {path: 'forms', component: FormsDemoComponent},
     {path: 'data', component: DataDemoComponent},
@@ -29,7 +31,9 @@ export const routes: Routes = [
     {path: 'charts', component: ChartsDemoComponent},
     {path: 'file', component: FileDemoComponent},
     {path: 'utils', component: UtilsDemoComponent},
-    {path: 'documentation', component: DocumentationComponent}
+    {path: 'documentation', component: DocumentationComponent},
+    {path: 'login', component: LoginComponent}
+    
 ];
 
 export const AppRoutes: ModuleWithProviders = RouterModule.forRoot(routes);
