@@ -93,8 +93,9 @@ export abstract class BaseService<TGet, TPost, TFilter>{
      * @returns
      * @memberOf BaseService
      */
-    _post(postModel: TPost, queryParams?: IQueryParams) {
-        const url = this.getUrl();
+    _post(postModel: TPost, queryParams?: IQueryParams, subpath?: string) {
+        subpath = subpath || '';
+        const url = this.getUrl() + subpath;
         const options = this.getHttpOptions(queryParams);
         return this.httpClient.post(url, postModel, options);
     }

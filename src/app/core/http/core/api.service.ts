@@ -64,10 +64,10 @@ export abstract class ApiService<TGet, TPost, TFilter> extends BaseService<TGet,
      *
      * @memberOf ApiService
      */
-    get(queryParams?: IQueryParams): Observable<any> {
+    get(queryParams?: IQueryParams, subpath?: string): Observable<any> {
 
         return Observable.create((observer: Observer<TGet>) => {
-            this._get(queryParams).subscribe((response: any) => {
+            this._get(queryParams, subpath).subscribe((response: any) => {
                 //const finalResult: any = this.handleFullResponse(response, this.dataModel.ListGet || this.dataModel.Get, options);
                 observer.next(response);
             }, (err) => {
@@ -88,9 +88,9 @@ export abstract class ApiService<TGet, TPost, TFilter> extends BaseService<TGet,
      *
      * @memberOf ApiService
      */
-    create(item: any, queryParams?: IQueryParams) {
+    create(item: any, queryParams?: IQueryParams, subpath?: string) {
         return Observable.create((observer: Observer<any>) => {
-            this._post(item, queryParams).subscribe((response: any) => {
+            this._post(item, queryParams, subpath).subscribe((response: any) => {
                 observer.next(response)
             }, (err) => {
                 observer.error(err);

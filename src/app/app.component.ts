@@ -1,5 +1,6 @@
 import {Component, AfterViewInit, ElementRef, Renderer, ViewChild, OnDestroy} from '@angular/core';
 import { AuthService } from './core/services/auth/Auth.service';
+import { AppointmentService } from './core/services/appointment/Appointment.service';
 
 enum MenuOrientation {
     STATIC,

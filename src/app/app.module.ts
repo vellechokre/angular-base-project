@@ -103,6 +103,8 @@ import { environment } from '../environments/environment';
 import { AuthService } from './core/services/auth/Auth.service';
 import { AuthGuardService } from './core/services/auth/AuthGuard.service';
 import { LoginComponent } from './core/components/login/login.component';
+import { AppointmentService } from './core/services/appointment/Appointment.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     imports: [
@@ -175,7 +177,8 @@ import { LoginComponent } from './core/components/login/login.component';
         ToolbarModule,
         TooltipModule,
         TreeModule,
-        TreeTableModule
+        TreeTableModule,
+        HttpClientModule
     ],
     declarations: [
         AppComponent,
@@ -205,7 +208,8 @@ import { LoginComponent } from './core/components/login/login.component';
         CarService, CountryService, EventService, NodeService,
         {provide: BASE_URL, useValue: environment.baseUrl},
         AuthService,
-        AuthGuardService
+        AuthGuardService,
+        AppointmentService
     ],
     bootstrap: [AppComponent]
 })
