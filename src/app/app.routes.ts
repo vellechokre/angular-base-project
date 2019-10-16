@@ -18,7 +18,7 @@ import { AuthGuardService } from './core/services/auth/AuthGuard.service';
 import { LoginComponent } from './core/components/login/login.component';
 
 export const routes: Routes = [
-    {path: '', component: DashboardDemoComponent,canActivate: [AuthGuardService]},
+    {path: '', component: DashboardDemoComponent},
     {path: 'sample', component: SampleDemoComponent},
     {path: 'forms', component: FormsDemoComponent},
     {path: 'data', component: DataDemoComponent},
@@ -32,7 +32,8 @@ export const routes: Routes = [
     {path: 'file', component: FileDemoComponent},
     {path: 'utils', component: UtilsDemoComponent},
     {path: 'documentation', component: DocumentationComponent},
-    {path: 'login', component: LoginComponent}
+    {path: 'login', component: LoginComponent},
+    { path: 'patient', loadChildren: './modules/Patient/patient.module#PatientModule', canActivate: [AuthGuardService]}
     
 ];
 
