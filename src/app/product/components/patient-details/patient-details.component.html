@@ -1,0 +1,129 @@
+<form #patientForm="ngForm">
+    <div class="card card-w-title">
+        <fieldset>
+            <legend>General Information</legend>
+            <div class="ui-g input-field-top-padding">
+                <div class="ui-g-12 ui-lg-4 ui-md-4 ui-fluid inputfield">
+                    <span class="md-inputfield">
+                        <input id="pFName" type="text" pInputText name="pfirstname" #firstname="ngModel"
+                            tooltipEvent="focus" pTooltip="{{firstname.hasError('required')? 'Required field':''}}"
+                            [(ngModel)]="patient.firstname"  required />
+                        <label for="pFName">First Name*</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-lg-4 ui-md-4 ui-fluid inputfield">
+                    <span class="md-inputfield">
+                        <input id="pLName" type="text" pInputText name="plastname" #lastname="ngModel"
+                            tooltipEvent="focus" pTooltip="{{lastname.hasError('required')? 'Required field':''}}"
+                            [(ngModel)]="patient.lastname"  required />
+                        <label for="pLName">Last Name*</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-lg-4 ui-md-4 ui-fluid inputfield">
+                    <span class="md-inputfield">
+                        <input id="email" type="text" pInputText name="email" #pemail="ngModel" tooltipEvent="focus"
+                            pTooltip="{{pemail.hasError('email')? 'Invalid Email':''}}" [(ngModel)]="patient.emailId" />
+                        <label for="email">Email</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-lg-4 ui-md-4 ui-fluid inputfield">
+                    <p-dropdown [options]="genders" name="gender" [ngModel]="patient.gender" [autoWidth]="false">
+                    </p-dropdown>
+                </div>
+                <div class="ui-g-12 ui-lg-4 ui-md-4 ui-fluid inputfield">
+                    <p-calendar #dob id="stDate" name="dob" [(ngModel)]="patient.dob"  dateFormat="dd.mm.yy"
+                        readonlyInput="true" [placeholder]="'Birth Date'" monthNavigator="true" yearNavigator="true"
+                        [yearRange]="'1950:2050'"></p-calendar>
+                </div>
+                <div class="ui-g-12 ui-lg-4 ui-md-4 ui-fluid inputfield">
+                    <span class="md-inputfield">
+                        <input id="number" type="text" pInputText name="phone" [(ngModel)]="patient.number"
+                            pattern="[0-9]*" minlength="10" maxlength="10" #mobile="ngModel" tooltipEvent="focus"
+                            pTooltip="{{mobile.hasError('pattern')? 'Only Numbers' :'Only 10 digits'}}" required />
+                        <label for="number">Phone Number*</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-lg-4 ui-md-4 ui-fluid inputfield">
+                    <span class="md-inputfield">
+                        <input id="weight" type="text" pInputText name="weight" [(ngModel)]="patient.weight"  />
+                        <label for="weight">Weight(kg)</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-lg-4 ui-md-4 ui-fluid inputfield">
+                    <p-dropdown [options]="bloodGroups" name="bloodgroup" [(ngModel)]="patient.bloodGroup"
+                        [autoWidth]="false"></p-dropdown>
+                </div>
+                <div class="ui-g-12 ui-lg-4 ui-md-4 ui-fluid inputfield">
+                    <p-dropdown [options]="languages" name="languages" [(ngModel)]="patient.preferredLanguage"
+                        [autoWidth]="false"></p-dropdown>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Address Details</legend>
+            <div class="ui-g input-field-top-padding">
+                <div class="ui-g-12 ui-lg-12 ui-md-12 ui-fluid inputfield">
+                    <span class="md-inputfield">
+                        <input id="address" type="text" pInputText name="address" [(ngModel)]="address.street" />
+                        <label for="address">Address</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-lg-3 ui-md-3 ui-fluid inputfield">
+                    <span class="md-inputfield">
+                        <input id="state" type="text" pInputText name="state" [(ngModel)]="address.state" />
+                        <label for="state">State</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-lg-3 ui-md-3 ui-fluid inputfield">
+                    <span class="md-inputfield">
+                        <input id="City" type="text" pInputText name="city" [(ngModel)]="address.city" />
+                        <label for="City">City</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-lg-3 ui-md-3 ui-fluid inputfield">
+                    <span class="md-inputfield">
+                        <input id="country" type="text" pInputText name="pincode" [(ngModel)]="address.country" />
+                        <label for="country">Country</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-lg-3 ui-md-3 ui-fluid inputfield">
+                    <span class="md-inputfield">
+                        <input id="pincode" type="text" pInputText name="pincode" [(ngModel)]="address.pincode" />
+                        <label for="pincode">Pincode</label>
+                    </span>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Appointment Details</legend>
+            <div class="ui-g">
+                <div class="ui-g-3 ui-fluid inputfield">
+                    <p-calendar #appointmentdate id="aDate" name="aDate" [(ngModel)]="appointmentDate"
+                        dateFormat="dd.mm.yy" readonlyInput="true" [placeholder]="'Appointment Date'"></p-calendar>
+                </div>
+                <div class="ui-g-3 ui-fluid inputfield">
+                    <p-calendar #startTime id="startTime" name="startTime" [showTime]="true" [timeOnly]="true"
+                        [(ngModel)]="appointmentDetails.appointmentStartDate" readonlyInput="true"
+                        [placeholder]="'Start Time'"></p-calendar>
+                </div>
+                <div class="ui-g-3 ui-fluid inputfield">
+                    <p-calendar #endTime id="endTime" name="endTime" [showTime]="true" [timeOnly]="true"
+                        [(ngModel)]="appointmentDetails.appointmentEndDate" readonlyInput="true"
+                        [placeholder]="'End Time'"></p-calendar>
+                </div>
+                <div class="ui-g-3 ui-fluid inputfield">
+                    <p-autoComplete [(ngModel)]="appointmentDetails.consultant" name="consultant"
+                        [suggestions]="filteredConsultantList" (completeMethod)="filterConsultants($event)"
+                        styleClass="wid100" [minLength]="1" placeholder="Consultant" field="name" [multiple]="false">
+                    </p-autoComplete>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div style="text-align:center">
+        <button type="submit" label="Save" [disabled]="!patientForm.form.valid" (click)="savePatientDetails()"
+            pButton></button>
+        <button type="button" label="Cancel" (click)="cancel()" pButton></button>
+    </div>
+</form>

@@ -1,0 +1,56 @@
+<form #schedule="ngForm">
+    <div class="ui-g input-field-top-padding">
+        <i class="topbar-icon material-icons searchicon">search</i>
+        <div class="searchicon" style="margin-bottom:10px">
+            <!-- [(ngModel)]="appointment.patient" -->
+            <p-autoComplete id="patientSearch" name="patientSearch" [suggestions]="filteredPatients"
+                (completeMethod)="filterPatients($event)" field="firstname" (onSelect)="onPatientSelect($event)"
+                [dropdown]="true" [size]="30" placeholder="Patient*" [minLength]="1" required>
+                <ng-template let-patient pTemplate="item">
+                    <div class="ui-helper-clearfix">
+                        <div>{{patient.firstname}} {{patient.lastname}}</div>
+                        <div style="margin:10px 10px 0 0">{{patient.number}}</div>
+                    </div>
+                </ng-template>
+            </p-autoComplete>
+        </div>
+
+        <div class="ui-g-12 ui-lg-12 ui-md-12 ui-fluid inputfield">
+            <p-calendar [appendTo]="'body'" #appointmentdate id="aDate" name="aDate" dateFormat="dd.mm.yy"
+                readonlyInput="true" [placeholder]="'Appointment Date'" [(ngModel)]="date"></p-calendar>
+        </div>
+        <div class="ui-g-12 ui-lg-12 ui-md-12 ui-fluid inputfield">
+            <p-calendar #startTime id="startTime" name="startTime" [(ngModel)]="appointment.appointmentStartDate"
+                [showTime]="true" [timeOnly]="true" readonlyInput="true" [placeholder]="'Start Time'"></p-calendar>
+        </div>
+        <div class="ui-g-12 ui-lg-12 ui-md-12 ui-fluid inputfield">
+            <p-calendar #endTime id="endTime" name="endTime" [showTime]="true"
+                [(ngModel)]="appointment.appointmentEndDate" [timeOnly]="true" dateFormat="dd.mm.yyyy"
+                readonlyInput="true" [placeholder]="'End Time'"></p-calendar>
+        </div>
+
+
+        <div class="ui-g-12 ui-lg-12 ui-md-12 ui-fluid inputfield">
+            <p-autoComplete [suggestions]="filteredConsultants" name="consultant" placeholder="Consultant" field="name"
+                (completeMethod)="filterConsultants($event)" [(ngModel)]="appointment.consultant" [dropdown]="true">
+
+            </p-autoComplete>
+        </div>
+
+        <div class="ui-g-12 ui-lg-12 ui-md-12 ui-fluid inputfield">
+            <span class="md-inputfield">
+                <input id="notes" type="text" pInputText name="notes" [(ngModel)]="appointment.note" />
+                <label for="notes">Notes</label>
+            </span>
+        </div>
+    </div>
+    <!--<p-footer>-->
+    <div style="padding-top:2em; float:right">
+        <!-- (click)="saveAppointment()" -->
+        <button type="button" [disabled]="!schedule.form.valid" pButton icon="fa-check" label="Save"></button>
+        <!-- (click)="display=false" -->
+        <button type="button" pButton icon="fa-close" label="Cancel"></button>
+    </div>
+
+    <!--</p-footer>-->
+</form>

@@ -4,7 +4,7 @@ import {HttpModule} from '@angular/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
-import {AppRoutes} from './app.routes';
+import { AppRoutingModule} from './app.routes';
 import 'rxjs/add/operator/toPromise';
 
 import {AccordionModule} from 'primeng/primeng';
@@ -105,12 +105,13 @@ import { AuthGuardService } from './core/services/auth/AuthGuard.service';
 import { LoginComponent } from './core/components/login/login.component';
 import { AppointmentService } from './core/services/appointment/Appointment.service';
 import { HttpClientModule } from '@angular/common/http';
+import { QuickAddPatientComponent } from './product/components/quick-add-patient/quick-add-patient.component';
+import { ScheduleAppointmentComponent } from './product/components/schedule-appointment/schedule-appointment.component';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
-        AppRoutes,
         HttpModule,
         BrowserAnimationsModule,
         AccordionModule,
@@ -178,7 +179,8 @@ import { HttpClientModule } from '@angular/common/http';
         TooltipModule,
         TreeModule,
         TreeTableModule,
-        HttpClientModule
+        HttpClientModule,
+        AppRoutingModule
     ],
     declarations: [
         AppComponent,
@@ -201,7 +203,9 @@ import { HttpClientModule } from '@angular/common/http';
         FileDemoComponent,
         UtilsDemoComponent,
         DocumentationComponent,
-        LoginComponent
+        LoginComponent,
+        QuickAddPatientComponent,
+        ScheduleAppointmentComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

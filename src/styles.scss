@@ -25,3 +25,28 @@
     margin-left: 0px!important;
     padding: 0px!important;
 }
+
+.layout-rightpanel-active {
+    top: 56px !important;
+    width: 300px!important;
+}
+
+.tab-view-custom {
+    border: none!important;
+}
+
+.input-field-top-padding > div{
+    padding-top: 18px!important;  
+}
+
+.input-field-top-padding > i{
+    padding-top: 18px!important;  
+}
+
+fieldset {
+    color: #a2a0a0;
+    border: 1px solid #a2a0a0;
+    border-radius: 5px;
+    padding-bottom: 24px;
+    margin-top: 16px;
+}

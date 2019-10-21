@@ -1,0 +1,13 @@
+<div class="layout-rightpanel" [ngClass]="{'layout-rightpanel-active': app.rightPanelActive}" (click)="app.onRightPanelClick()">
+    <div #rightPanelMenuScroller class="nano">
+        <p-tabView [styleClass]="'tab-view-custom'">
+            <p-tabPanel header="Quick Add Patient">
+               <app-quick-add-patient></app-quick-add-patient>
+            </p-tabPanel>
+            <p-tabPanel header="Book Appointment">
+                <app-schedule-appointment></app-schedule-appointment>
+            </p-tabPanel>
+        </p-tabView>
+    </div>
+
+</div>

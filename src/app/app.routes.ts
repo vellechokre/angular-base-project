@@ -1,5 +1,5 @@
 import {Routes, RouterModule} from '@angular/router';
-import {ModuleWithProviders} from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import {DashboardDemoComponent} from './demo/view/dashboarddemo.component';
 import {SampleDemoComponent} from './demo/view/sampledemo.component';
 import {FormsDemoComponent} from './demo/view/formsdemo.component';
@@ -33,8 +33,11 @@ export const routes: Routes = [
     {path: 'utils', component: UtilsDemoComponent},
     {path: 'documentation', component: DocumentationComponent},
     {path: 'login', component: LoginComponent},
-    { path: 'patient', loadChildren: './modules/Patient/patient.module#PatientModule', canActivate: [AuthGuardService]}
-    
+    { path: 'patient', loadChildren: './product/modules/Patient/patient.module#PatientModule'},
 ];
 
-export const AppRoutes: ModuleWithProviders = RouterModule.forRoot(routes);
+@NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+  })
+  export class AppRoutingModule { }

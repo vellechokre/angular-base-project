@@ -1,0 +1,54 @@
+<form #quickAddPatient="ngForm">
+    <div class="ui-g input-field-top-padding">
+      <div class="ui-g-12 ui-lg-12 ui-md-12  ui-fluid inputfield">
+        <span class="md-inputfield">
+           <input id="pFName" type="text" pInputText name="pfirstname"  #firstname="ngModel" tooltipEvent="focus" pTooltip="{{firstname.hasError('required')? 'Required field':''}}" [(ngModel)]="patient.firstname" required/>
+           <label for="pFName">First Name*</label>
+       </span>
+      </div>
+      <div class="ui-g-12 ui-lg-12 ui-md-12 ui-fluid inputfield">
+        <span class="md-inputfield">
+           <input id="pLName" type="text" pInputText name="plastname" #lastname="ngModel" tooltipEvent="focus" pTooltip="{{lastname.hasError('required')? 'Required field':''}}" [(ngModel)]="patient.lastname" required/>
+           <label for="pLName">Last Name*</label>
+       </span>
+      </div>
+      <div class="ui-g-12 ui-lg-12 ui-md-12 ui-fluid inputfield">
+        <p-calendar #dob id="stDate" name="dob" [appendTo]="'body'" [(ngModel)]="patient.dob" dateFormat="dd.mm.yy" readonlyInput="true" [placeholder]="'Birth Date'"
+          monthNavigator="true" yearNavigator="true" [yearRange]="'1950:2050'"></p-calendar>
+      </div>
+      <div class="ui-g-12 ui-lg-12 ui-md-12 ui-fluid inputfield">
+        <span class="md-inputfield">
+           <input id="email" type="text" pInputText  name="email" [(ngModel)]="patient.emailId"/>
+           <label for="email">Email</label>
+       </span>
+      </div>
+      <div class="ui-g-12 ui-lg-12 ui-md-12 ui-fluid inputfield">
+        <span class="md-inputfield">
+           <input id="number" type="text" pInputText name="phone" [(ngModel)]="patient.number" pattern="[0-9]*" minlength="10" maxlength="10" #mobile="ngModel" tooltipEvent="focus" pTooltip="{{mobile.hasError('pattern')? 'Only Numbers' :'Only 10 digits'}}" required/>
+           <label for="number">Phone Number*</label>
+       </span>
+      </div>
+      <div class="ui-g-12 ui-lg-12 ui-md-12 ui-fluid inputfield">
+        <p-dropdown [options]="genders" name="gender" [(ngModel)]="patient.gender" [autoWidth]="false"></p-dropdown>
+      </div>
+      
+      <div class="ui-g-12 ui-lg-12 ui-md-12 ui-fluid inputfield">
+        <span class="md-inputfield">
+           <input id="address" type="text" pInputText name="address" [(ngModel)]="address.street" />
+           <label for="address">Address</label>
+       </span>
+      </div>
+      <div class="ui-g-12 ui-lg-12 ui-md-12 ui-fluid inputfield">
+        <p-checkbox name="welcome message" binary="true" [(ngModel)]="patient.sendWelcomeMessage" label="Send Welcome Message" inputId="welcome"></p-checkbox>
+      </div>
+      <div class="ui-g-12 ui-lg-12 ui-md-12 ui-fluid inputfield">
+        <p-checkbox name="send_address" binary="true" [(ngModel)]="patient.sendAddress" label="Send Address" inputId="address"></p-checkbox>
+      </div>
+    </div>
+    <div style="padding-top:2em; float:right">
+        <!-- (click)="savePatient()" -->
+      <button type="button" [disabled]="!quickAddPatient.form.valid" pButton icon="fa-check"  label="Save"></button>
+      <!-- (click)="onDialogClose()" -->
+      <button type="button" pButton icon="fa-close"  label="Cancel"></button>
+    </div>
+  </form>
