@@ -1,5 +1,6 @@
-export class PatientDetail {
-    id:number;
+import { BaseObjectWithIdAndBranchId } from "./baseobjectwithidandbranchid";
+
+export class PatientDetail extends BaseObjectWithIdAndBranchId {
     firstname: string;
     lastname: string;
     number: string;

@@ -1,0 +1,14 @@
+.patient-action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+    button {
+        padding: 0 8px!important;
+    }
+}
+
+.pending-amount-patient-grid {
+    .ui-dialog-content {
+        padding: 0px!important;
+    }
+}

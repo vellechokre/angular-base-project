@@ -1,0 +1,19 @@
+.record-visit-auto-complete-container {
+    display: flex;
+    width: 65vw;
+    justify-content: space-evenly;
+    padding: 10px 8px 10px 8px;
+    border: 1px solid #b2b0b094;
+    border-radius: 5px;
+    margin: auto;
+    background: #fff;
+    .record-visit-auto-complete {
+        width: 60vw;
+        display: flex;
+        justify-content: flex-start;
+        input{
+            width: 80%;
+            border-bottom: none;
+        }
+    }
+}

@@ -1,7 +1,7 @@
 import { PatientDetail } from "./patient";
+import { BaseObjectWithIdAndBranchId } from "./baseobjectwithidandbranchid";
 
-export class Address {
-    id:number;
+export class Address extends BaseObjectWithIdAndBranchId {
     patient: PatientDetail;
     country:string;
     state: string;

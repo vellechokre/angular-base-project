@@ -16,6 +16,7 @@ import {UtilsDemoComponent} from './demo/view/utilsdemo.component';
 import {DocumentationComponent} from './demo/view/documentation.component';
 import { AuthGuardService } from './core/services/auth/AuthGuard.service';
 import { LoginComponent } from './core/components/login/login.component';
+import { CalendarComponent } from './product/components/calendar/calendar.component';
 
 export const routes: Routes = [
     {path: '', component: DashboardDemoComponent},
@@ -33,7 +34,9 @@ export const routes: Routes = [
     {path: 'utils', component: UtilsDemoComponent},
     {path: 'documentation', component: DocumentationComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'calendar', component: CalendarComponent},
     { path: 'patient', loadChildren: './product/modules/Patient/patient.module#PatientModule'},
+    { path: 'record-visit', loadChildren: './product/modules/record-visit/record-visit.module#RecordVisitModule'},
 ];
 
 @NgModule({

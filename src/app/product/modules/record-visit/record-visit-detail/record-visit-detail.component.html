@@ -1,0 +1,60 @@
+<div class="patient-detail">
+    <div class="patient-detail-container">
+        <div class="patient-detail-container-header">Name</div>
+        <div class="patient-detail-container-data">Sanchit Mirg</div>
+    </div>
+    <div class="patient-detail-container">
+        <div class="patient-detail-container-header">Contact No.</div>
+        <div class="patient-detail-container-data">876543210</div>
+    </div>
+    <div class="patient-detail-container">
+        <div class="patient-detail-container-header">Total Amount</div>
+        <div class="patient-detail-container-data">5000</div>
+    </div>
+    <div class="patient-detail-container">
+        <div class="patient-detail-container-header">Remaining Amount</div>
+        <div class="patient-detail-container-data">3000</div>
+    </div>
+</div>
+
+<div class="patient-visit">
+    <div class="patient-visit-details">
+        <div class="patient-visit-details-header">Add Treatments</div>
+
+        <div class="patient-visit-details-data">
+            <ng-template let-item let-last="last" ngFor [ngForOf]="items">
+                <div>
+                    <a (click)="category(item)">{{item.title}}</a>
+                </div>
+            </ng-template>
+        </div>
+
+    </div>
+    <div class="patient-visit-details">
+        <div class="patient-visit-details-header">Manage Treatments</div>
+        <div class="patient-visit-details-data">
+            <ng-template let-item let-last="last" ngFor [ngForOf]="subcategories">
+                <div>
+                    <a (click)="subcategory(item)">{{item.name}}</a>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+    <div class="patient-visit-details patient-visit-details-price">
+        <div class="patient-visit-details-header">Selected Treatments and Pricing</div>
+        <div class="patient-visit-details-price-data">
+            <ng-template let-item let-last="last" ngFor [ngForOf]="visitDetails" let-i="index">
+                <div>
+                    <h4>{{ item.subcategory}}</h4>
+                </div>
+                <div>
+                    <input mdInput name="price" [(ngModel)]="totalPrice" #price placeholder="Price"> - <input #discount
+                        name="discount" [(ngModel)]="discountPrice" (blur)="setFinalPrice(i)" mdInput
+                        placeholder="Discount"> = <input #final [(ngModel)]="netPrice" name="final" mdInput
+                        placeholder="Final Price">
+                    <i class="topbar-icon material-icons icon" (click)='deleteValue(i)'>delete</i>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

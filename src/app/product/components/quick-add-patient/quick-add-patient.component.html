@@ -47,8 +47,8 @@
     </div>
     <div style="padding-top:2em; float:right">
         <!-- (click)="savePatient()" -->
-      <button type="button" [disabled]="!quickAddPatient.form.valid" pButton icon="fa-check"  label="Save"></button>
+      <button type="button" [disabled]="!quickAddPatient.form.valid" pButton icon="fa-check"  (click)="savePatient()" label="Save"></button>
       <!-- (click)="onDialogClose()" -->
-      <button type="button" pButton icon="fa-close"  label="Cancel"></button>
+      <button type="button" pButton icon="fa-close"  (click)="cancel()" label="Cancel"></button>
     </div>
   </form>

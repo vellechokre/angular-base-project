@@ -104,9 +104,12 @@ import { AuthService } from './core/services/auth/Auth.service';
 import { AuthGuardService } from './core/services/auth/AuthGuard.service';
 import { LoginComponent } from './core/components/login/login.component';
 import { AppointmentService } from './core/services/appointment/Appointment.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { QuickAddPatientComponent } from './product/components/quick-add-patient/quick-add-patient.component';
 import { ScheduleAppointmentComponent } from './product/components/schedule-appointment/schedule-appointment.component';
+import { PatientService } from './product/services/patient.service';
+import { RequestInterceptor } from './core/http/request-interceptor.service';
+import { CalendarComponent } from './product/components/calendar/calendar.component';
 
 @NgModule({
     imports: [
@@ -205,7 +208,8 @@ import { ScheduleAppointmentComponent } from './product/components/schedule-appo
         DocumentationComponent,
         LoginComponent,
         QuickAddPatientComponent,
-        ScheduleAppointmentComponent
+        ScheduleAppointmentComponent,
+        CalendarComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
@@ -213,7 +217,9 @@ import { ScheduleAppointmentComponent } from './product/components/schedule-appo
         {provide: BASE_URL, useValue: environment.baseUrl},
         AuthService,
         AuthGuardService,
-        AppointmentService
+        AppointmentService,
+        PatientService,
+        { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }
     ],
     bootstrap: [AppComponent]
 })

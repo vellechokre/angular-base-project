@@ -1,0 +1,96 @@
+.patient-detail {
+    display: flex;
+    border-radius: 4px;
+    margin-top: 8px;
+    justify-content: space-between;
+    background: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    // padding: 0 16px;
+    margin-left: 8px;
+    margin-right: 8px;
+    &-container {
+        display: flex;
+        flex-grow: 1;
+        border-right:1px solid #e7e2e2;
+        &-header {
+            padding: 8px;
+            color: black;
+            font-weight: 500;
+        }
+        &-data {
+            padding: 8px;
+            font-size: 14px;
+            color: #635d5d;
+            font-weight: 600;
+
+        }
+    }
+}
+
+.patient-visit {
+    display: flex;
+    // padding: 8px;
+    // margin-top: 8px;
+    height: 75vh;
+    &-details {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        flex-grow: 1;
+        margin: 8px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        border-radius: 5px;
+        flex: 0 0 30%;
+        &-header {
+            display: flex;
+            padding: 8px;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: #000000;
+            border-bottom: 1px solid #ecdada;
+            background: #8bc34a;
+            color: #fff;
+        }
+        &-data {
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+            align-items: stretch;
+            div {
+                padding: 8px;
+                display: flex;
+                justify-content: center;
+                &:hover {
+                    background-color: #8bc34a;
+                    border-right: 6px solid #607d8b;
+                    cursor: pointer;
+                    color: white;
+                }
+            }
+        }
+    }
+    &-details-price {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 35%;
+        &-data {
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+            div {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                margin-top: 8px;
+                width: 73%;
+                input {
+                    width: 20%;
+                }
+                i {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

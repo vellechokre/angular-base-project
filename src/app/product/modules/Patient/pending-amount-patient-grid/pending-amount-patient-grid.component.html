@@ -1,0 +1,15 @@
+<p-dataTable [value]="pendingPatientList" [rows]="20" [loading]="loader" [paginator]="true" [pageLinks]="3"
+    [rowsPerPageOptions]="[5,10,20]">
+    <p-column field="firstname" header="First Name" [filter]="true" filterPlaceholder="Search">
+    </p-column>
+    <p-column field="lastname" header="Last Name" [filter]="true" filterPlaceholder="Search">
+    </p-column>
+    <p-column field="number" header="Phone">
+    </p-column>
+    <p-column field="dob" header="Date of Birth">
+    </p-column>
+    <p-column field="totalAmount" header="Amount">
+    </p-column>
+    <p-column field="pendingAmount" header="Rem. Amount">
+    </p-column>
+</p-dataTable>

@@ -4,6 +4,8 @@ import { Address } from '../../modals/address';
 import { AppointmentDetails } from '../../modals/appointment';
 import { ConsultantDetails } from '../../modals/consultant';
 import { PatientData } from '../../modals/patientdata';
+import { PatientService } from '../../services/patient.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quick-add-patient',
@@ -13,11 +15,9 @@ import { PatientData } from '../../modals/patientdata';
 export class QuickAddPatientComponent implements OnInit {
 
   patient: PatientDetail = new PatientDetail()
-  address: Address = new Address()
-  appointmentDetails: AppointmentDetails = new AppointmentDetails();
-  consultant: ConsultantDetails = new ConsultantDetails();
+  address: Address = new Address();
   patientData: PatientData = new PatientData();
-  loading: boolean = false;
+  appointmentDetails: AppointmentDetails = new AppointmentDetails();
 
   genders = [
     { value: '', label: 'Gender' },
@@ -26,9 +26,24 @@ export class QuickAddPatientComponent implements OnInit {
     { value: 'o', label: 'Others' }
   ];
   
-  constructor() { }
+  constructor(
+    private patientService: PatientService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    this.patient = new PatientDetail();
   }
 
+  savePatient() {
+    this.patientData.patientDetail = this.patient;
+    this.patientData.addressDetail = this.address;
+    this.patientService.create(this.patientData,null, '/save')
+      .subscribe((response) => {
+        this.cancel()});
+  }
+
+  cancel() {
+    this.router.navigate(['/patient'])
+  }
 }

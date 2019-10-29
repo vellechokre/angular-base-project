@@ -1,36 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PatientComponent } from './patient/patient.component';
 import { Routes, RouterModule } from '@angular/router';
-import { PatientDetailsComponent } from '../../components/patient-details/patient-details.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule, AutoCompleteModule, BreadcrumbModule, ButtonModule, CalendarModule, CarouselModule, ColorPickerModule, ChartModule, CheckboxModule, TreeTableModule, TreeModule, TooltipModule, ToolbarModule, ToggleButtonModule, TieredMenuModule, InputTextareaModule, InputTextModule, SharedModule, DropdownModule, DataTableModule, MenubarModule, DialogModule } from 'primeng/primeng';
 import { HttpClientModule } from '@angular/common/http';
-import { PatientGridComponent } from './patient-grid/patient-grid.component';
-import { PendingAmountPatientGrid } from './pending-amount-patient-grid/pending-amount-patient-grid.component';
+import { RecordVisitComponent } from './record-visit/record-visit.component';
+import { RecordVisitDetailComponent } from './record-visit-detail/record-visit-detail.component';
+import { RecordVisitSearchComponent } from './record-visit-search/record-visit-search.component';
 
 const routes: Routes = [
   {
-    path: '', component: PatientGridComponent,
-    /* children: [                          //<---- child components declared here
-      {
-        path: 'addpatient',
-        component: PatientDetailsComponent
-      }
-    ] */
+    path: '', component: RecordVisitComponent,
   },
-  { path: 'addpatient', component: PatientDetailsComponent },
+  // { path: 'addpatient', component: PatientDetailsComponent },
 ];
 
 @NgModule({
   declarations: [
-    PatientComponent,
-    PatientDetailsComponent,
-    PatientGridComponent,
-    PendingAmountPatientGrid
+    RecordVisitComponent,
+    RecordVisitDetailComponent,
+    RecordVisitSearchComponent
   ],
   imports: [
     FormsModule,
@@ -65,4 +55,4 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class PatientModule { }
+export class RecordVisitModule { }
