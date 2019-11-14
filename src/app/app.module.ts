@@ -110,6 +110,9 @@ import { ScheduleAppointmentComponent } from './product/components/schedule-appo
 import { PatientService } from './product/services/patient.service';
 import { RequestInterceptor } from './core/http/request-interceptor.service';
 import { CalendarComponent } from './product/components/calendar/calendar.component';
+import { GetClinic } from './product/services/get-clinic.service';
+import { GetBranches } from './product/services/get-branches.service';
+import { AuthenticateService } from './product/services/authenticate.service';
 
 @NgModule({
     imports: [
@@ -219,6 +222,9 @@ import { CalendarComponent } from './product/components/calendar/calendar.compon
         AuthGuardService,
         AppointmentService,
         PatientService,
+        GetClinic,
+        GetBranches,
+        AuthenticateService,
         { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }
     ],
     bootstrap: [AppComponent]

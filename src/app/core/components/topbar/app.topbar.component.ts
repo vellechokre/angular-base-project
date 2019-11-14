@@ -8,8 +8,8 @@ import {AppComponent} from '../../../app.component';
             <div class="topbar-left topbar-custom-left">
                 <div class="logo"></div>
             </div>
-
-            <div *ngIf="isUserAuthorised" class="topbar-right topbar-custom-right">
+            {{isUserAuthorised}}
+            <div *ngIf="isUserAuthorized" class="topbar-right topbar-custom-right">
                 <a id="menu-button" href="#" (click)="app.onMenuButtonClick($event)">
                     <i></i>
                 </a>
@@ -97,7 +97,7 @@ import {AppComponent} from '../../../app.component';
 })
 export class AppTopbarComponent {
 
-    @Input() isUserAuthorised: boolean = false;
+    @Input() isUserAuthorized: boolean = false;
 
     constructor(public app: AppComponent) {}
 

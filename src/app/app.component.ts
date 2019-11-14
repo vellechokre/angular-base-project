@@ -1,4 +1,4 @@
-import {Component, AfterViewInit, ElementRef, Renderer, ViewChild, OnDestroy} from '@angular/core';
+import {Component, AfterViewInit, ElementRef, Renderer, ViewChild, OnDestroy, ChangeDetectorRef} from '@angular/core';
 import { AuthService } from './core/services/auth/Auth.service';
 import { AppointmentService } from './core/services/appointment/Appointment.service';
 
@@ -55,20 +55,23 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
     menuHoverActive: boolean;
 
-    isUserAuthorised: boolean = false;
+    isUserAuthorized: boolean = false;
 
     @ViewChild('layoutContainer') layourContainerViewChild: ElementRef;
 
     @ViewChild('layoutMenuScroller') layoutMenuScrollerViewChild: ElementRef;
 
     constructor(public renderer: Renderer, 
-        private authService: AuthService) {
-            this.isUserAuthorised = this.authService.isAuthenticated();
+        private authService: AuthService,
+        private cd: ChangeDetectorRef) {
+            this.authService.isAuthorized.subscribe((isUserAuthorized) => {
+                this.isUserAuthorized = isUserAuthorized;
+            })
         }
 
     ngAfterViewInit() {
         this.layoutContainer = <HTMLDivElement> this.layourContainerViewChild.nativeElement;
-        this.layoutMenuScroller = <HTMLDivElement> this.layoutMenuScrollerViewChild.nativeElement;
+        this.layoutMenuScroller = this.layoutMenuScrollerViewChild && <HTMLDivElement> this.layoutMenuScrollerViewChild.nativeElement;
 
         setTimeout(() => {
             jQuery(this.layoutMenuScroller).nanoScroller({flash: true});

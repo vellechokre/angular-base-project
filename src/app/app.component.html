@@ -1,5 +1,4 @@
 <div class="layout-wrapper" [ngClass]="{'layout-compact':layoutCompact}" (click)="onLayoutClick()">
-
     <div #layoutContainer class="layout-container" 
             [ngClass]="{'menu-layout-static': !isOverlay(),
             'menu-layout-overlay': isOverlay(),
@@ -8,10 +7,9 @@
             'menu-layout-slim': isSlim(),
             'layout-menu-static-inactive': staticMenuDesktopInactive,
             'layout-menu-static-active': staticMenuMobileActive}">
+        <app-topbar [isUserAuthorized]="isUserAuthorized"></app-topbar>
 
-        <app-topbar [isUserAuthorised]="isUserAuthorised"></app-topbar>
-
-        <div *ngIf="isUserAuthorised" class="layout-menu layout-menu-custom" [ngClass]="{'layout-menu-dark':darkMenu}" (click)="onMenuClick($event)">
+        <div *ngIf="isUserAuthorized" class="layout-menu layout-menu-custom" [ngClass]="{'layout-menu-dark':darkMenu}" (click)="onMenuClick($event)">
             <div #layoutMenuScroller class="nano">
                 <div class="nano-content menu-scroll-content">
                     <app-inline-profile *ngIf="profileMode=='inline'&&!isHorizontal()"></app-inline-profile>
@@ -21,7 +19,7 @@
         </div>
         
         <div class="layout-main layout-main-custom"
-            [ngClass]="{'layout-custom': !isUserAuthorised}">
+            [ngClass]="{'layout-custom': !isUserAuthorized}">
             <router-outlet></router-outlet>
             
             <!-- <app-footer *ngIf="isUserAuthorised"></app-footer> -->

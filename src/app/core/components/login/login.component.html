@@ -5,28 +5,36 @@
                 <img src="../../assets/layout/images/logo-ultima.svg">
             </div>
             <div class="ui-g-12">
-                  <span class="md-inputfield">
-                      <input type="text" autocomplete="off" class="ui-inputtext ui-corner-all ui-state-default ui-widget">
-                      <label>Username</label>
-                  </span>
+                <p-autoComplete placeholder="Select Clinic" [forceSelection]="true" [(ngModel)]="selectedClinic" field="name" [suggestions]="filteredClinics" (completeMethod)="onFilterClinic($event)"
+                    [dropdown]="true" [minLength]="1" (onSelect)="onClinicSelection($value)"></p-autoComplete>
+            </div>
+            <div class="ui-g-12">
+                <p-autoComplete placeholder="Select Branch" [forceSelection]="true" [(ngModel)]="selectedBranch" field="name" [suggestions]="filteredBranches" (completeMethod)="onFilterBranch($event)"
+                    [dropdown]="true" [minLength]="1" (onSelect)="onBranchSelection($value)"></p-autoComplete>
             </div>
             <div class="ui-g-12">
                 <span class="md-inputfield">
-                    <input type="password" autocomplete="off" class="ui-inputtext ui-corner-all ui-state-default ui-widget">
-                    <label>Password</label>
+                    <input id="username" name="userName" [(ngModel)]="userName" type="text" autocomplete="off" class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                    <label for="username">Username</label>
                 </span>
             </div>
             <div class="ui-g-12">
-                <button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left">
-                    <span class="ui-button-icon-left ui-c fa fa-fw ui-icon-person"></span>
+                <span class="md-inputfield">
+                    <input id="password" name="password" [(ngModel)]="password" type="password" autocomplete="off"
+                        class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                    <label for="password">Password</label>
+                </span>
+            </div>
+            <div class="ui-g-12">
+                <button type="button" (click) = "login()"
+                    class="secondary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left">
                     <span class="ui-button-text ui-c">Sign In</span>
                 </button>
-                <button type="button" class="secondary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left">
-                    <span class="ui-button-icon-left ui-c fa fa-fw ui-icon-help"></span>
-                    <span class="ui-button-text ui-c">Sign In</span>
-                </button>
+                <!-- <button type="button"
+                    class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left">
+                    <span class="ui-button-text ui-c">Forgot Password</span>
+                </button> -->
             </div>
         </div>
-           
     </div>
 </div>

@@ -19,7 +19,8 @@ import { LoginComponent } from './core/components/login/login.component';
 import { CalendarComponent } from './product/components/calendar/calendar.component';
 
 export const routes: Routes = [
-    {path: '', component: DashboardDemoComponent},
+    {path: 'login', component: LoginComponent},
+    {path: 'dashboard', component: DashboardDemoComponent, canActivate: [AuthGuardService]},
     {path: 'sample', component: SampleDemoComponent},
     {path: 'forms', component: FormsDemoComponent},
     {path: 'data', component: DataDemoComponent},
@@ -33,10 +34,10 @@ export const routes: Routes = [
     {path: 'file', component: FileDemoComponent},
     {path: 'utils', component: UtilsDemoComponent},
     {path: 'documentation', component: DocumentationComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'calendar', component: CalendarComponent},
+    {path: 'calendar', component: CalendarComponent, canActivate: [AuthGuardService]},
     { path: 'patient', loadChildren: './product/modules/Patient/patient.module#PatientModule'},
     { path: 'record-visit', loadChildren: './product/modules/record-visit/record-visit.module#RecordVisitModule'},
+    {path: '', pathMatch:'full' , redirectTo:'/dashboard'},
 ];
 
 @NgModule({
