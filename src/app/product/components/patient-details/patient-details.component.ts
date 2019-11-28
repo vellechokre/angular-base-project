@@ -4,6 +4,8 @@ import { Address } from '../../modals/address';
 import { AppointmentDetails } from '../../modals/appointment';
 import { ConsultantDetails } from '../../modals/consultant';
 import { PatientData } from '../../modals/patientdata';
+import { TriStateCheckbox } from 'primeng/primeng';
+import { PatientService } from '../../services/patient.service';
 @Component({
   selector: 'app-patient-details',
   templateUrl: './patient-details.component.html',
@@ -12,19 +14,19 @@ import { PatientData } from '../../modals/patientdata';
 
 export class PatientDetailsComponent implements OnInit {
 
-  patient: PatientDetail = new PatientDetail()
+  private patient: PatientDetail = new PatientDetail(); 
   
-  address: Address = new Address();
+  private address: Address = new Address();
 
-  appointmentDetails: AppointmentDetails = new AppointmentDetails();
+  private appointmentDetails: AppointmentDetails = new AppointmentDetails();
   
-  consultant: ConsultantDetails = new ConsultantDetails();
+  private consultant: ConsultantDetails = new ConsultantDetails();
 
-  patientData: PatientData = new PatientData();
+  private patientData: PatientData = new PatientData();
 
-  consultantList: ConsultantDetails[] = [];
+  private consultantList: ConsultantDetails[] = [];
 
-  filteredConsultantList: ConsultantDetails[] = [];
+  private filteredConsultantList: ConsultantDetails[] = [];
   
   loading:boolean = false;
 
@@ -56,7 +58,17 @@ export class PatientDetailsComponent implements OnInit {
 
   ];
   
-  constructor() { }
-  ngOnInit() {
+  constructor(
+    private patientService: PatientService
+  ) { }
+
+  ngOnInit() { }
+
+  savePatientDetails() {
+    this.patientData.patientDetail = this.patient;
+    this.patientData.addressDetail = this.address;
+    this.patientData.appointmentDetail = this.appointmentDetails;
+
+    this.patientService.create(this.patientData).subscribe((response) => console.log("response on save patient is", response))
   }
 }
