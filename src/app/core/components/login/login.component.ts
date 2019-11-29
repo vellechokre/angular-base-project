@@ -79,10 +79,10 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        this.authenticateService.create({username: this.userName, password: this.password}).
+        const requestBody = {username: this.userName, password: this.password, clinic: this.selectedClinic, branchs: [this.selectedBranch]};
+        this.authenticateService.create(requestBody).
         subscribe((response) => {
            if(response && response.token) localStorage.setItem('token', response.token);
-        //    this.authService.loginSuccesful();
             this.router.navigate(['/dashboard']);
         })
     }

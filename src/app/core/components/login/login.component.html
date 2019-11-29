@@ -2,9 +2,6 @@
     <div class="card login-panel ui-fluid">
         <div class="ui-g">
             <div class="ui-g-12">
-                <img src="../../assets/layout/images/logo-ultima.svg">
-            </div>
-            <div class="ui-g-12">
                 <p-autoComplete placeholder="Select Clinic" [forceSelection]="true" [(ngModel)]="selectedClinic" field="name" [suggestions]="filteredClinics" (completeMethod)="onFilterClinic($event)"
                     [dropdown]="true" [minLength]="1" (onSelect)="onClinicSelection($value)"></p-autoComplete>
             </div>

@@ -20,6 +20,10 @@
     background: none!important;
     display: flex;
     justify-content: center;
+    height: 500px;
+    .login-panel {
+        margin: 50px auto 0 auto;
+    }
 }
 .layout-custom {
     margin-left: 0px!important;
