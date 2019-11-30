@@ -69,6 +69,6 @@ export class PatientDetailsComponent implements OnInit {
     this.patientData.addressDetail = this.address;
     this.patientData.appointmentDetail = this.appointmentDetails;
 
-    this.patientService.create(this.patientData).subscribe((response) => console.log("response on save patient is", response))
+    this.patientService.create(this.patientData, null,'/save').subscribe((response) => console.log("response on save patient is", response))
   }
 }
