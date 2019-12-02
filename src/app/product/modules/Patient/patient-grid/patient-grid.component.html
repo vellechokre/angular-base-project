@@ -22,7 +22,11 @@
         </p-column>
         <p-column styleClass="col-button">
             <ng-template let-patient="rowData" pTemplate="body">
-                <button type="button" pButton (click)="editPatient(patient)" label="Edit"></button>
+                <!-- <button type="button" pButton (click)="editPatient(patient)" label="Edit"></button> -->
+                <div class='flex-center'>
+                    <i class="fa ui-icon-edit cursor-pointer"></i>
+                </div>
+               
             </ng-template>
         </p-column>
     </p-dataTable>

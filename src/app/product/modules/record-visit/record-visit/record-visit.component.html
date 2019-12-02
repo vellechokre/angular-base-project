@@ -1,2 +1,2 @@
-<app-record-visit-search></app-record-visit-search>
-<app-record-visit-detail></app-record-visit-detail>
+<app-record-visit-search (eSelectedPatient)="onPatientSelection($event)"></app-record-visit-search>
+<app-record-visit-detail [patient]="patient"></app-record-visit-detail>

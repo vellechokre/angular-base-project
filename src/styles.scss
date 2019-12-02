@@ -61,3 +61,63 @@ fieldset {
     padding-left: 8px!important;
     padding-bottom: 8px!important;
 }
+
+body .ui-datatable .ui-datatable-thead > tr th {
+    padding: .25em .5em;
+    font-weight: bold;
+    .ui-chkbox {
+        &-icon {
+            margin-top: -3px;
+        }
+        .ui-chkbox-box {
+            width: 12px;
+            height: 12px;
+        }
+    }
+}
+
+body .ui-datatable .ui-datatable-data > tr {
+    border-bottom: 1px solid #e5e5e5;
+    td {
+        padding: .5em .75em;
+        font-weight: normal;
+        border: none;
+        .ui-chkbox {
+            &-icon {
+                margin-top: -3px;
+            }
+            .ui-chkbox-box {
+                width: 12px;
+                height: 12px;
+                
+            }
+        }
+    }
+}
+  
+body .ui-datatable .ui-paginator {
+    padding: .125em;
+    background-color: #869da96e;
+    border: none;
+    a {
+        color: black;
+    }
+}
+
+body .ui-button, body .ui-datepicker-buttonpane > button {
+    background-color: #9badb6;
+}
+
+.patient-action-buttons > button {
+    background-color: #9badb6;
+    margin: 0px 3px;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}

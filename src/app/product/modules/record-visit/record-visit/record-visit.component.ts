@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PatientDetail } from '../../../modals/patient';
 
 @Component({
   selector: 'app-record-visit',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecordVisitComponent implements OnInit {
 
+  patient: any;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onPatientSelection(selectedPatient) {
+    this.patient = selectedPatient;
   }
 
 }

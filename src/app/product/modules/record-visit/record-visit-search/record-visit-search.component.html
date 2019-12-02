@@ -1,6 +1,6 @@
 <div class="record-visit-auto-complete-container">
     <i class="fa fa-search" aria-hidden="true"></i>
-    <p-autoComplete [(ngModel)]="selectedPatient" [suggestions]="patients" (completeMethod)="search($event)"
-        field="name" [styleClass]="'record-visit-auto-complete'"
-        [placeholder]="'Search Patient'" dropdown="true"></p-autoComplete>
+    <p-autoComplete [(ngModel)]="selectedPatient" [suggestions]="filteredPatients" (completeMethod)="search($event)"
+        field="firstname" [styleClass]="'record-visit-auto-complete'"
+        [placeholder]="'Search Patient'" dropdown="true" (onSelect)="onPatientSelect()"></p-autoComplete>
 </div>

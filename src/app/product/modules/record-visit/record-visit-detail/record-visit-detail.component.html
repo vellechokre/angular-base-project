@@ -1,19 +1,19 @@
 <div class="patient-detail">
     <div class="patient-detail-container">
         <div class="patient-detail-container-header">Name</div>
-        <div class="patient-detail-container-data">Sanchit Mirg</div>
+        <div class="patient-detail-container-data">{{patient?.firstname}}</div>
     </div>
     <div class="patient-detail-container">
         <div class="patient-detail-container-header">Contact No.</div>
-        <div class="patient-detail-container-data">876543210</div>
+        <div class="patient-detail-container-data">{{patient?.number}}</div>
     </div>
     <div class="patient-detail-container">
         <div class="patient-detail-container-header">Total Amount</div>
-        <div class="patient-detail-container-data">5000</div>
+        <div class="patient-detail-container-data">{{patient?.totalAmount ? patient.totalAmount : 0}}</div>
     </div>
     <div class="patient-detail-container">
         <div class="patient-detail-container-header">Remaining Amount</div>
-        <div class="patient-detail-container-data">3000</div>
+        <div class="patient-detail-container-data">{{patient?.pendingAmount ? patient.pendingAmount : 0}}</div>
     </div>
 </div>
 

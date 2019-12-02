@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PatientDetail } from '../../../modals/patient';
 import { VisitDetails } from '../../../modals/visit-details';
 import { PaymentDetail } from '../../../modals/payment-details';
@@ -30,6 +30,8 @@ export class RecordVisitDetailComponent implements OnInit {
   netPrice:number = 0;
 
   patientId: number;
+
+  @Input() patient: any;
   
   items: Object[] = [
     {

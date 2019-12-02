@@ -35,8 +35,8 @@ export const routes: Routes = [
     {path: 'utils', component: UtilsDemoComponent},
     {path: 'documentation', component: DocumentationComponent},
     {path: 'calendar', component: CalendarComponent, canActivate: [AuthGuardService]},
-    { path: 'patient', loadChildren: './product/modules/Patient/patient.module#PatientModule'},
-    { path: 'record-visit', loadChildren: './product/modules/record-visit/record-visit.module#RecordVisitModule'},
+    { path: 'patient', loadChildren: './product/modules/Patient/patient.module#PatientModule', canActivate: [AuthGuardService]},
+    { path: 'record-visit', loadChildren: './product/modules/record-visit/record-visit.module#RecordVisitModule', canActivate: [AuthGuardService]},
     {path: '', pathMatch:'full' , redirectTo:'/dashboard'},
 ];
 

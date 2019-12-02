@@ -15,7 +15,7 @@ export class RequestInterceptor implements HttpInterceptor {
                       })
                 })
             );
-        }else{
+        } else {
             const authReq = req.clone({
                 headers: req.headers.set('Authorization', authToken)
               });
@@ -24,8 +24,7 @@ export class RequestInterceptor implements HttpInterceptor {
                 headers: authReq.headers.set('x_branch_id', '1')
             })
 
-        console.log("=============", finalRequest)
-        return next.handle(finalRequest);
+            return next.handle(finalRequest);
         }
     }
 }
