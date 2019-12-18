@@ -1,0 +1,65 @@
+{
+    "general": [
+      {
+        "id": "1",
+        "name": "MOBILE TOOTH"
+      },
+      {
+        "id": "2",
+        "name": "FIRM TOOTH"
+      },
+      {
+        "id": "3",
+        "name": "OPEN EXTRACTION"
+      },
+      {
+        "id": "4",
+        "name": "ROOT STUMPS"
+      },
+      {
+        "id": "5",
+        "name": "WISDOM TOOTH"
+      },
+      {
+        "id": "6",
+        "name": "NORMAL EXTRACTION"
+      },
+      {
+        "id": "7",
+        "name": "UPPER FULLY ERUPTED"
+      },
+      {
+        "id": "8",
+        "name": "UPPER PARTIAL ERUPTED"
+      },
+      {
+        "id": "9",
+        "name": "UPPER NON ERUPTED"
+      },
+      {
+        "id": "10",
+        "name": "LOWER FULLY ERUPTED"
+      },
+      {
+        "id": "11",
+        "name": "LOWER PARTIAL ERUPTED"
+      },
+      {
+        "id": "12",
+        "name": "LOWER NON ERUPTED"
+      },
+      {
+        "id": "13",
+        "name": "ORTHODONTIC EXTRACTION"
+      },
+      {
+        "id": "14",
+        "name": "ABSCESS DRAINAGE"
+      },
+      {
+        "id": "15",
+        "name": "PEDO EXTRACTION"
+      }
+
+    ]
+}
