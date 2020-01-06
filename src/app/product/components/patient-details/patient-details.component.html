@@ -65,31 +65,37 @@
             <div class="ui-g input-field-top-padding">
                 <div class="ui-g-12 ui-lg-12 ui-md-12 ui-fluid inputfield">
                     <span class="md-inputfield">
-                        <input id="address" type="text" pInputText name="address" [(ngModel)]="address.street" />
+                        <input id="address" type="text" pInputText name="address" [ngModel]="address?.street" (ngModelChange)="address.street = $event"/>
                         <label for="address">Address</label>
                     </span>
                 </div>
                 <div class="ui-g-12 ui-lg-3 ui-md-3 ui-fluid inputfield">
                     <span class="md-inputfield">
-                        <input id="state" type="text" pInputText name="state" [(ngModel)]="address.state" />
-                        <label for="state">State</label>
+                        <p-autoComplete [ngModel]="address?.state" (ngModelChange)="address.state = $event" name="state"
+                            [suggestions]="filteredStates" (completeMethod)="filterStates($event)" (onSelect)="getCitiesByStateId($event)"
+                            styleClass="wid100" [minLength]="1" placeholder="Select State" field="name" [multiple]="false">
+                        </p-autoComplete>
                     </span>
                 </div>
                 <div class="ui-g-12 ui-lg-3 ui-md-3 ui-fluid inputfield">
                     <span class="md-inputfield">
-                        <input id="City" type="text" pInputText name="city" [(ngModel)]="address.city" />
-                        <label for="City">City</label>
+                        <p-autoComplete [ngModel]="address?.city" (ngModelChange)="address.city = $event" name="city"
+                            [suggestions]="filteredCities" (completeMethod)="filterCities($event)"
+                            styleClass="wid100" [minLength]="1" placeholder="Select City" field="name" [multiple]="false">
+                        </p-autoComplete>
                     </span>
                 </div>
                 <div class="ui-g-12 ui-lg-3 ui-md-3 ui-fluid inputfield">
                     <span class="md-inputfield">
-                        <input id="country" type="text" pInputText name="pincode" [(ngModel)]="address.country" />
-                        <label for="country">Country</label>
+                        <p-autoComplete [ngModel]="address?.country" (ngModelChange)="address.country = $event" name="country"
+                            [suggestions]="filteredCountries" (completeMethod)="filterCountries($event)"
+                            styleClass="wid100" [minLength]="1" placeholder="Select Country" field="name" [multiple]="false">
+                        </p-autoComplete>
                     </span>
                 </div>
                 <div class="ui-g-12 ui-lg-3 ui-md-3 ui-fluid inputfield">
                     <span class="md-inputfield">
-                        <input id="pincode" type="text" pInputText name="pincode" [(ngModel)]="address.pincode" />
+                        <input id="pincode" type="text" pInputText name="pincode" [ngModel]="address?.pincode" (ngModelChange)="address.pincode = $event"/>
                         <label for="pincode">Pincode</label>
                     </span>
                 </div>
@@ -104,16 +110,16 @@
                 </div>
                 <div class="ui-g-3 ui-fluid inputfield">
                     <p-calendar #startTime id="startTime" name="startTime" [showTime]="true" [timeOnly]="true"
-                        [(ngModel)]="appointmentDetails.appointmentStartDate" readonlyInput="true"
+                        [ngModel]="appointmentDetails?.appointmentStartDate" (ngModelChange)="appointmentDetails.appointmentStartDate = $event" readonlyInput="true"
                         [placeholder]="'Start Time'"></p-calendar>
                 </div>
                 <div class="ui-g-3 ui-fluid inputfield">
                     <p-calendar #endTime id="endTime" name="endTime" [showTime]="true" [timeOnly]="true"
-                        [(ngModel)]="appointmentDetails.appointmentEndDate" readonlyInput="true"
+                        [ngModel]="appointmentDetails?.appointmentEndDate" (ngModelChange)="appointmentDetails.appointmentEndDate = $event" readonlyInput="true"
                         [placeholder]="'End Time'"></p-calendar>
                 </div>
                 <div class="ui-g-3 ui-fluid inputfield">
-                    <p-autoComplete [(ngModel)]="appointmentDetails.consultant" name="consultant"
+                    <p-autoComplete [ngModel]="appointmentDetails?.consultant" (ngModelChange)="appointmentDetails.consultant" name="consultant"
                         [suggestions]="filteredConsultantList" (completeMethod)="filterConsultants($event)"
                         styleClass="wid100" [minLength]="1" placeholder="Consultant" field="name" [multiple]="false">
                     </p-autoComplete>

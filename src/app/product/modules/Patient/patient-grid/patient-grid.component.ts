@@ -34,4 +34,8 @@ export class PatientGridComponent implements OnInit {
     this.displayPendingAmountPatientGrid = true;
   }
 
+  editPatient(patient) {
+    this.router.navigate(['patient/editpatient', patient.id])
+  }
+
 }

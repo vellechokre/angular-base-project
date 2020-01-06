@@ -40,7 +40,10 @@ export class QuickAddPatientComponent implements OnInit {
     this.patientData.addressDetail = this.address;
     this.patientService.create(this.patientData,null, '/save')
       .subscribe((response) => {
-        this.cancel()});
+        this.patient = new PatientDetail();
+        this.address = new Address();
+        this.cancel()
+      });
   }
 
   cancel() {

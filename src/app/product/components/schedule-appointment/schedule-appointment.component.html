@@ -2,8 +2,7 @@
     <div class="ui-g input-field-top-padding">
         <i class="topbar-icon material-icons searchicon">search</i>
         <div class="searchicon" style="margin-bottom:10px">
-            <!-- [(ngModel)]="appointment.patient" -->
-            <p-autoComplete id="patientSearch" name="patientSearch" [suggestions]="filteredPatients"
+            <p-autoComplete id="patientSearch" name="patientSearch" [suggestions]="filteredPatients" [(ngModel)]="appointment.patient"
                 (completeMethod)="filterPatients($event)" field="firstname" (onSelect)="onPatientSelect($event)"
                 [dropdown]="true" [size]="30" placeholder="Patient*" [minLength]="1" required>
                 <ng-template let-patient pTemplate="item">
@@ -30,12 +29,12 @@
         </div>
 
 
-        <div class="ui-g-12 ui-lg-12 ui-md-12 ui-fluid inputfield">
+        <!-- <div class="ui-g-12 ui-lg-12 ui-md-12 ui-fluid inputfield">
             <p-autoComplete [suggestions]="filteredConsultants" name="consultant" placeholder="Consultant" field="name"
                 (completeMethod)="filterConsultants($event)" [(ngModel)]="appointment.consultant" [dropdown]="true">
 
             </p-autoComplete>
-        </div>
+        </div> -->
 
         <div class="ui-g-12 ui-lg-12 ui-md-12 ui-fluid inputfield">
             <span class="md-inputfield">
@@ -46,10 +45,8 @@
     </div>
     <!--<p-footer>-->
     <div style="padding-top:2em; float:right">
-        <!-- (click)="saveAppointment()" -->
-        <button type="button" [disabled]="!schedule.form.valid" pButton icon="fa-check" label="Save"></button>
-        <!-- (click)="display=false" -->
-        <button type="button" pButton icon="fa-close" label="Cancel"></button>
+        <button type="button" [disabled]="!schedule.form.valid" pButton icon="fa-check" (click)="saveAppointment()" label="Save"></button>
+        <button type="button" pButton icon="fa-close" label="Cancel" (click)="display=false"></button>
     </div>
 
     <!--</p-footer>-->

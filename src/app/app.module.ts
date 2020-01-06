@@ -103,7 +103,6 @@ import { environment } from '../environments/environment';
 import { AuthService } from './core/services/auth/Auth.service';
 import { AuthGuardService } from './core/services/auth/AuthGuard.service';
 import { LoginComponent } from './core/components/login/login.component';
-import { AppointmentService } from './core/services/appointment/Appointment.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { QuickAddPatientComponent } from './product/components/quick-add-patient/quick-add-patient.component';
 import { ScheduleAppointmentComponent } from './product/components/schedule-appointment/schedule-appointment.component';
@@ -113,6 +112,10 @@ import { CalendarComponent } from './product/components/calendar/calendar.compon
 import { GetClinic } from './product/services/get-clinic.service';
 import { GetBranches } from './product/services/get-branches.service';
 import { AuthenticateService } from './product/services/authenticate.service';
+import { CountriesService } from './product/services/countries.service';
+import { StatesService } from './product/services/states.service';
+import { CitiesService } from './product/services/cities.service';
+import { AppointmentService } from './product/services/appointment.service';
 
 @NgModule({
     imports: [
@@ -225,6 +228,9 @@ import { AuthenticateService } from './product/services/authenticate.service';
         GetClinic,
         GetBranches,
         AuthenticateService,
+        CountriesService,
+        StatesService,
+        CitiesService,
         { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }
     ],
     bootstrap: [AppComponent]

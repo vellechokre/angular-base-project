@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PatientDetail } from '../../modals/patient';
 import { AppointmentDetails } from '../../modals/appointment';
 import { Router } from '@angular/router';
+import { PatientService } from '../../services/patient.service';
+import { AppointmentService } from '../../services/appointment.service';
 @Component({
   selector: 'app-schedule-appointment',
   templateUrl: './schedule-appointment.component.html',
@@ -28,19 +30,25 @@ export class ScheduleAppointmentComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private patientService: PatientService,
+    private appointmentService: AppointmentService
   ) { }
 
   ngOnInit() {
+    this.patientService.get()
+    .subscribe((response) => {
+      if (response) this.patients = response['_embedded']['patients']
+    })
   }
 
   filterPatients(event) {
-    /* this.filteredPatients = [];
+    this.filteredPatients = [];
     for (let i = 0; i < this.patients.length; i++) {
       let patient = this.patients[i];
       if (patient.firstname && patient.firstname.toLowerCase().indexOf(event.query.toLowerCase()) === 0) {
         this.filteredPatients.push(patient);
       }
-    } */
+    }
   }
 
   onHide() {
@@ -63,7 +71,13 @@ export class ScheduleAppointmentComponent implements OnInit {
   }
 
   saveAppointment() {
-    
+    this.appointmentService.create(this.appointment, null, '/save').subscribe((response) => {
+      if(response) {
+        this.appointment = new AppointmentDetails();
+        this.router.navigate(['/patient']);
+        this.display = false;
+      };
+    })
   }
 
   onDialogClose() {

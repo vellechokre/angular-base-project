@@ -22,6 +22,7 @@ const routes: Routes = [
     ] */
   },
   { path: 'addpatient', component: PatientDetailsComponent },
+  { path: 'editpatient/:id', component: PatientDetailsComponent },
 ];
 
 @NgModule({

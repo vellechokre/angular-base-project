@@ -24,7 +24,7 @@
             <ng-template let-patient="rowData" pTemplate="body">
                 <!-- <button type="button" pButton (click)="editPatient(patient)" label="Edit"></button> -->
                 <div class='flex-center'>
-                    <i class="fa ui-icon-edit cursor-pointer"></i>
+                    <i class="fa ui-icon-edit cursor-pointer" (click)="editPatient(patient)"></i>
                 </div>
                
             </ng-template>
