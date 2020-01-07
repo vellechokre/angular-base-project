@@ -1,1 +1,8 @@
-<p-schedule [events]="events" [header]="headerConfig" defaultDate="{{defaultDate}}" [eventLimit]="4" [editable]="true" (onEventClick)="onClick($event)"></p-schedule>
+<p-schedule [events]="events" [header]="headerConfig" defaultDate="{{defaultDate}}"
+    [eventLimit]="4" [editable]="true"
+    (onEventClick)="onClick($event)" (onEventMouseover)="handleMouseOver($event,op)">
+</p-schedule>
+
+<p-overlayPanel appendTo="body" #op>
+    <label>{{popOverTitle}}</label>
+</p-overlayPanel>
