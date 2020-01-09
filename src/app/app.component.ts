@@ -1,5 +1,6 @@
 import {Component, AfterViewInit, ElementRef, Renderer, ViewChild, OnDestroy, ChangeDetectorRef} from '@angular/core';
 import { AuthService } from './core/services/auth/Auth.service';
+import { Router } from '@angular/router';
 
 enum MenuOrientation {
     STATIC,
@@ -62,7 +63,8 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
     constructor(public renderer: Renderer, 
         private authService: AuthService,
-        private cd: ChangeDetectorRef) {
+        private cd: ChangeDetectorRef,
+        public router: Router,) {
             this.authService.isAuthorized.subscribe((isUserAuthorized) => {
                 this.isUserAuthorized = isUserAuthorized;
             })
@@ -154,6 +156,11 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         this.rightPanelClick = true;
         this.rightPanelActive = !this.rightPanelActive;
         event.preventDefault();
+    }
+
+    onLogoutClick(event){
+        localStorage.removeItem('token');
+        this.router.navigate(['/login']);
     }
 
     onRightPanelClick() {

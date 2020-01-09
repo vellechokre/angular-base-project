@@ -1,0 +1,45 @@
+{
+    "general": [
+      {
+        "id": "1",
+        "name": "METAL PROTHESIS"
+      },
+      {
+        "id": "2",
+        "name": "PFM PROSTHESIS"
+      },
+      {
+        "id": "3",
+        "name": "PFM 3M/ VITA"
+      },
+      {
+        "id": "4",
+        "name": "PFM TILITE DMLS"
+      },
+      {
+        "id": "5",
+        "name": "METAL FREE ZIRCONIA"
+      },
+      {
+        "id": "6",
+        "name": "METAL FREE EMAX ULTRA"
+      },
+      {
+        "id": "7",
+        "name": "METAL FREE BRUXIR"
+      },
+      {
+        "id": "8",
+        "name": "METAL FREE 3M LAVA"
+      },
+      {
+        "id": "9",
+        "name": "PEDO CROWN"
+      },
+      {
+        "id": "10",
+        "name": "CAST POST WITH PFM"
+      }
+
+    ]
+}

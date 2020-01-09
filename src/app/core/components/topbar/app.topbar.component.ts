@@ -22,9 +22,10 @@ import {AppComponent} from '../../../app.component';
                     <i class="material-icons">menu</i>
                 </a>
 
-                <a id="logout-menu-button" href="#">
+                <a id="rightpanel-menu-button" href="#" (click)="app.onLogoutClick($event)">
                 <i class="material-icons">power_settings_new</i>
-            </a>
+                </a>
+
             </div>
         </div>
     `

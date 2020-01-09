@@ -1,0 +1,37 @@
+{
+    "general": [
+      {
+        "id": "1",
+        "name": "POST AND CORE"
+      },
+      {
+        "id": "2",
+        "name": "ROOT CANAL ANTERIOR"
+      },
+      {
+        "id": "3",
+        "name": "ROOT CANAL POSTERIOR"
+      },
+      {
+        "id": "4",
+        "name": "POST ENDO RESTORATION"
+      },
+      {
+        "id": "5",
+        "name": "THIRD MOLAR RCT"
+      },
+      {
+        "id": "6",
+        "name": "COMPLICATED RCT"
+      },
+      {
+        "id": "7",
+        "name": "PECO RCT/ PULPECTOMY"
+      },
+      {
+        "id": "8",
+        "name": "PEDO PULPOTOMY"
+      }
+
+    ]
+}
