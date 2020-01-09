@@ -160,6 +160,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
     onLogoutClick(event){
         localStorage.removeItem('token');
+        this.isUserAuthorized = false;
         this.router.navigate(['/login']);
     }
 

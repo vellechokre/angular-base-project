@@ -61,6 +61,7 @@ module.exports = module.exports.toString();
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_services_auth_Auth_service__ = __webpack_require__("../../../../../src/app/core/services/auth/Auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -72,6 +73,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var MenuOrientation;
 (function (MenuOrientation) {
     MenuOrientation[MenuOrientation["STATIC"] = 0] = "STATIC";
@@ -80,11 +82,12 @@ var MenuOrientation;
     MenuOrientation[MenuOrientation["HORIZONTAL"] = 3] = "HORIZONTAL";
 })(MenuOrientation || (MenuOrientation = {}));
 var AppComponent = (function () {
-    function AppComponent(renderer, authService, cd) {
+    function AppComponent(renderer, authService, cd, router) {
         var _this = this;
         this.renderer = renderer;
         this.authService = authService;
         this.cd = cd;
+        this.router = router;
         this.layoutCompact = true;
         this.layoutMode = MenuOrientation.STATIC;
         this.darkMenu = false;
@@ -172,6 +175,10 @@ var AppComponent = (function () {
         this.rightPanelActive = !this.rightPanelActive;
         event.preventDefault();
     };
+    AppComponent.prototype.onLogoutClick = function (event) {
+        localStorage.removeItem('token');
+        this.router.navigate(['/login']);
+    };
     AppComponent.prototype.onRightPanelClick = function () {
         this.rightPanelClick = true;
     };
@@ -230,10 +237,10 @@ AppComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__core_services_auth_Auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__core_services_auth_Auth_service__["a" /* AuthService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectorRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectorRef"]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__core_services_auth_Auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__core_services_auth_Auth_service__["a" /* AuthService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectorRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectorRef"]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["Router"]) === "function" && _f || Object])
 ], AppComponent);
 
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -1068,7 +1075,7 @@ __decorate([
 AppTopbarComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-topbar',
-        template: "\n        <div class=\"topbar topbar-custom clearfix\">\n            <div class=\"topbar-left topbar-custom-left\">\n                <div class=\"logo\"></div>\n            </div>\n            {{isUserAuthorised}}\n            <div *ngIf=\"isUserAuthorized\" class=\"topbar-right topbar-custom-right\">\n                <a id=\"menu-button\" href=\"#\" (click)=\"app.onMenuButtonClick($event)\">\n                    <i></i>\n                </a>\n\n                <a id=\"rightpanel-menu-button\" href=\"#\" (click)=\"app.onRightPanelButtonClick($event)\">\n                    <i class=\"material-icons\">more_vert</i>\n                </a>\n\n                <a id=\"topbar-menu-button\" href=\"#\" (click)=\"app.onTopbarMenuButtonClick($event)\">\n                    <i class=\"material-icons\">menu</i>\n                </a>\n\n                <a id=\"logout-menu-button\" href=\"#\">\n                <i class=\"material-icons\">power_settings_new</i>\n            </a>\n            </div>\n        </div>\n    "
+        template: "\n        <div class=\"topbar topbar-custom clearfix\">\n            <div class=\"topbar-left topbar-custom-left\">\n                <div class=\"logo\"></div>\n            </div>\n            {{isUserAuthorised}}\n            <div *ngIf=\"isUserAuthorized\" class=\"topbar-right topbar-custom-right\">\n                <a id=\"menu-button\" href=\"#\" (click)=\"app.onMenuButtonClick($event)\">\n                    <i></i>\n                </a>\n\n                <a id=\"rightpanel-menu-button\" href=\"#\" (click)=\"app.onRightPanelButtonClick($event)\">\n                    <i class=\"material-icons\">more_vert</i>\n                </a>\n\n                <a id=\"topbar-menu-button\" href=\"#\" (click)=\"app.onTopbarMenuButtonClick($event)\">\n                    <i class=\"material-icons\">menu</i>\n                </a>\n\n                <a id=\"rightpanel-menu-button\" href=\"#\" (click)=\"app.onLogoutClick($event)\">\n                <i class=\"material-icons\">power_settings_new</i>\n                </a>\n\n            </div>\n        </div>\n    "
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__app_component__["a" /* AppComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__app_component__["a" /* AppComponent */]) === "function" && _a || Object])
 ], AppTopbarComponent);

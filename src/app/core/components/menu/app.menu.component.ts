@@ -6,7 +6,7 @@ import {AppComponent} from '../../../app.component';
 @Component({
     selector: 'app-menu',
     template: `
-        <ul app-submenu [item]="model" root="true" class="ultima-menu ultima-main-menu clearfix" [reset]="reset" visible="true"></ul>
+        <ul app-submenu  [item]="model" root="true" class="ultima-menu ultima-main-menu clearfix" [reset]="reset" visible="true"></ul>
     `
 })
 export class AppMenuComponent implements OnInit {
