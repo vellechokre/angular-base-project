@@ -88,7 +88,7 @@ body {
                 }
             }
             
-            #topbar-menu-button, #rightpanel-menu-button  {
+            #topbar-menu-button, #rightpanel-menu-button, #logout-menu-button  {
                 display: none;
                 color: $topbarButtonColor;
                 vertical-align: middle;
@@ -105,6 +105,14 @@ body {
             }
             
             #rightpanel-menu-button {
+                display: block;
+                
+                &:hover {
+                    color: $topbarButtonHoverColor;
+                }
+            }
+
+            #logout-menu-button {
                 display: block;
                 
                 &:hover {
@@ -1400,6 +1408,17 @@ body {
                 }
                 
                 #rightpanel-menu-button {
+                    position: absolute;
+                    height: 1.5em;
+                    right: 16px;
+                    top: 1.375em;
+                    
+                    i {
+                        font-size: 1.5em;
+                    }
+                }
+
+                #logout-menu-button {
                     position: absolute;
                     height: 1.5em;
                     right: 8px;

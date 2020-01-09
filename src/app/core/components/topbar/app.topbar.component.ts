@@ -22,75 +22,9 @@ import {AppComponent} from '../../../app.component';
                     <i class="material-icons">menu</i>
                 </a>
 
-                <ul class="topbar-items animated fadeInDown" [ngClass]="{'topbar-items-visible': app.topbarMenuActive}">
-                    <li #profile class="profile-item" *ngIf="app.profileMode==='top'||app.isHorizontal()"
-                        [ngClass]="{'active-top-menu':app.activeTopbarItem === profile}">
-
-                        <a href="#" (click)="app.onTopbarItemClick($event,profile)">
-                            <img class="profile-image" src="assets/layout/images/avatar.png" />
-                            <span class="topbar-item-name">Jane Williams</span>
-                        </a>
-
-                        <ul class="ultima-menu animated fadeInDown">
-                            <li role="menuitem">
-                                <a href="#">
-                                    <i class="material-icons">person</i>
-                                    <span>Profile</span>
-                                </a>
-                            </li>
-                            <li role="menuitem">
-                                <a href="#">
-                                    <i class="material-icons">security</i>
-                                    <span>Privacy</span>
-                                </a>
-                            </li>
-                            <li role="menuitem">
-                                <a href="#">
-                                    <i class="material-icons">settings_applications</i>
-                                    <span>Settings</span>
-                                </a>
-                            </li>
-                            <li role="menuitem">
-                                <a href="#">
-                                    <i class="material-icons">power_settings_new</i>
-                                    <span>Logout</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li #settings [ngClass]="{'active-top-menu':app.activeTopbarItem === settings}">
-                        <a href="#" (click)="app.onTopbarItemClick($event,settings)">
-                            <i class="topbar-icon material-icons">settings</i>
-                            <span class="topbar-item-name">Settings</span>
-                        </a>
-                        <ul class="ultima-menu animated fadeInDown">
-                            <li role="menuitem">
-                                <a href="#">
-                                    <i class="material-icons">palette</i>
-                                    <span>Change Theme</span>
-                                </a>
-                            </li>
-                            <li role="menuitem">
-                                <a href="#">
-                                    <i class="material-icons">favorite_border</i>
-                                    <span>Favorites</span>
-                                </a>
-                            </li>
-                            <li role="menuitem">
-                                <a href="#">
-                                    <i class="material-icons">lock</i>
-                                    <span>Lock Screen</span>
-                                </a>
-                            </li>
-                            <li role="menuitem">
-                                <a href="#">
-                                    <i class="material-icons">wallpaper</i>
-                                    <span>Wallpaper</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                <a id="logout-menu-button" href="#">
+                <i class="material-icons">power_settings_new</i>
+            </a>
             </div>
         </div>
     `

@@ -37,7 +37,7 @@ export const routes: Routes = [
     {path: 'calendar', component: CalendarComponent, canActivate: [AuthGuardService]},
     { path: 'patient', loadChildren: './product/modules/Patient/patient.module#PatientModule', canActivate: [AuthGuardService]},
     { path: 'record-visit', loadChildren: './product/modules/record-visit/record-visit.module#RecordVisitModule', canActivate: [AuthGuardService]},
-    {path: '', pathMatch:'full' , redirectTo:'/dashboard'},
+    {path: '', pathMatch:'full' , redirectTo:'/calendar'},
 ];
 
 @NgModule({

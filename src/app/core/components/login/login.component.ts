@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit {
         this.authenticateService.create(requestBody).
         subscribe((response) => {
            if(response && response.token) localStorage.setItem('token', response.token);
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/calendar']);
         })
     }
 
