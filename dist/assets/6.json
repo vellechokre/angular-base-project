@@ -1,0 +1,37 @@
+{
+    "general": [
+      {
+        "id": "1",
+        "name": "DENTURE ECONOMIC"
+      },
+      {
+        "id": "2",
+        "name": "DENTURE MELIODENT"
+      },
+      {
+        "id": "3",
+        "name": "DENTURE LUCITONE"
+      },
+      {
+        "id": "4",
+        "name": "FLEXIBLE DENTURE"
+      },
+      {
+        "id": "5",
+        "name": "IMPLANT DENTURE"
+      },
+      {
+        "id": "6",
+        "name": "IMPLANT FIXED PROSTHESIS"
+      },
+      {
+        "id": "7",
+        "name": "RPD"
+      },
+      {
+        "id": "8",
+        "name": "FLEXIBLE RPD"
+      }
+
+    ]
+}

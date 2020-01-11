@@ -122,8 +122,8 @@ import { TreatmentTypesService } from './product/services/treatmenttypes.service
 import { AlertComponent } from './core/components/alert/alert.component';
 import { AlertService } from './core/services/Alert.service';
 import { MessageService } from 'primeng/components/common/messageservice';
-import { LoaderComponent } from './core/components/loader/loader.component';
 import { LoaderModule } from './core/components/loader/loader.module';
+import { RecordVisitService } from './product/services/record-visit.service';
 
 @NgModule({
     imports: [
@@ -247,7 +247,8 @@ import { LoaderModule } from './core/components/loader/loader.module';
         TreatmentTypesService,
         { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
         AlertService,
-        MessageService
+        MessageService,
+        RecordVisitService
     ],
     bootstrap: [AppComponent]
 })

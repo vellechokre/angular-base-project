@@ -6,6 +6,8 @@ import { RecortVisit } from '../../../modals/record-visit';
 import { Http } from '@angular/http';
 import { TreatmentTypesService } from '../../../services/treatmenttypes.service';
 import { TreatmentCategoriesService } from '../../../services/treatmentCategories';
+import { RecordVisitService } from '../../../services/record-visit.service';
+import { AlertService } from '../../../../core/services/Alert.service';
 @Component({
   selector: 'app-record-visit-detail',
   templateUrl: './record-visit-detail.component.html',
@@ -40,7 +42,9 @@ export class RecordVisitDetailComponent implements OnInit {
   constructor(
     private http: Http,
     private treatmentTypesService: TreatmentTypesService,
-    private treatmentCategoriesService: TreatmentCategoriesService
+    private treatmentCategoriesService: TreatmentCategoriesService,
+    private recordVisitService: RecordVisitService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -80,5 +84,24 @@ export class RecordVisitDetailComponent implements OnInit {
     this.visitDetails[i].amount = price;
     this.visitDetails[i].discount = discount;
     this.visitDetails[i].netAmount = final;
+  }
+
+  saveVisit(){
+    this.recordVisit.patientDetail = this.patient;
+    this.recordVisit.visitDetails = this.visitDetails;
+    if(!this.patient){
+      this.alertService.error('Validation Failed', 'Please select patient first !!!');
+      return;
+    }
+    if(!this.visitDetails){
+      this.alertService.error('Validation Failed', 'Please select treatment with price first !!!');
+      return;
+    }
+    this.recordVisitService.create(this.recordVisit, null, '/save').subscribe((response) => {
+      this.alertService.success('Data saved Successfully', 'Data saved Successfully');
+      // this.router.navigate(['/calendar']);
+   }, (error) => {
+       this.alertService.error('Login Failed', JSON.parse(error.error).message);
+   })
   }
 }
