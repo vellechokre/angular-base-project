@@ -20,12 +20,13 @@
         
         <div class="layout-main layout-main-custom"
             [ngClass]="{'layout-custom': !isUserAuthorized}">
+            <app-alert></app-alert>
             <router-outlet></router-outlet>
             
             <!-- <app-footer *ngIf="isUserAuthorised"></app-footer> -->
         </div>
         
-        <app-rightpanel></app-rightpanel>
+        <app-rightpanel *ngIf="isUserAuthorized"></app-rightpanel>
         
         <div class="layout-mask"></div>
     </div>

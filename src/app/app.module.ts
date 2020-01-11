@@ -116,6 +116,11 @@ import { CountriesService } from './product/services/countries.service';
 import { StatesService } from './product/services/states.service';
 import { CitiesService } from './product/services/cities.service';
 import { AppointmentService } from './product/services/appointment.service';
+import { TreatmentCategoriesService } from './product/services/treatmentCategories';
+import { TreatmentTypesService } from './product/services/treatmenttypes.service';
+import { AlertComponent } from './core/components/alert/alert.component';
+import { AlertService } from './core/services/Alert.service';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 @NgModule({
     imports: [
@@ -204,7 +209,8 @@ import { AppointmentService } from './product/services/appointment.service';
         FormsDemoComponent,
         DataDemoComponent,
         PanelsDemoComponent,
-        OverlaysDemoComponent, MenusDemoComponent,
+        OverlaysDemoComponent, 
+        MenusDemoComponent,
         MessagesDemoComponent,
         MiscDemoComponent,
         ChartsDemoComponent,
@@ -215,7 +221,8 @@ import { AppointmentService } from './product/services/appointment.service';
         LoginComponent,
         QuickAddPatientComponent,
         ScheduleAppointmentComponent,
-        CalendarComponent
+        CalendarComponent,
+        AlertComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
@@ -231,7 +238,11 @@ import { AppointmentService } from './product/services/appointment.service';
         CountriesService,
         StatesService,
         CitiesService,
-        { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }
+        TreatmentCategoriesService,
+        TreatmentTypesService,
+        { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
+        AlertService,
+        MessageService
     ],
     bootstrap: [AppComponent]
 })

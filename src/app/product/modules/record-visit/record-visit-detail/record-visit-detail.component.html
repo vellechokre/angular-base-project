@@ -24,7 +24,7 @@
         <div class="patient-visit-details-data">
             <ng-template let-item let-last="last" ngFor [ngForOf]="items">
                 <div>
-                    <a (click)="category(item)">{{item.title}}</a>
+                    <a (click)="category(item)">{{item.description}}</a>
                 </div>
             </ng-template>
         </div>
@@ -35,7 +35,7 @@
         <div class="patient-visit-details-data">
             <ng-template let-item let-last="last" ngFor [ngForOf]="subcategories">
                 <div>
-                    <a (click)="subcategory(item)">{{item.name}}</a>
+                    <a (click)="subcategory(item)">{{item.description}}</a>
                 </div>
             </ng-template>
         </div>
@@ -48,11 +48,16 @@
                     <h4>{{ item.subcategory}}</h4>
                 </div>
                 <div>
-                    <input mdInput name="price" [(ngModel)]="totalPrice" #price placeholder="Price"> - <input #discount
-                        name="discount" [(ngModel)]="discountPrice" (blur)="setFinalPrice(i)" mdInput
-                        placeholder="Discount"> = <input #final [(ngModel)]="netPrice" name="final" mdInput
+                    <!-- <input mdInput name="price" [(ngModel)]="totalPrice" #price placeholder="Price"> - 
+                        <input #discount name="discount" [(ngModel)]="discountPrice" (blur)="setFinalPrice(i)" mdInput placeholder="Discount">          
+                        = <input #final [(ngModel)]="netPrice" name="final" mdInput 
                         placeholder="Final Price">
-                    <i class="topbar-icon material-icons icon" (click)='deleteValue(i)'>delete</i>
+                    <i class="topbar-icon material-icons icon" (click)='deleteValue(i)'>remove_cirle</i> -->
+                    <input mdInput name="price{{i}}" [(ngModel)]="item.amount" #price placeholder="Price"> - <input #discount
+                        name="discount{{i}}" [(ngModel)]="item.discount" (blur)="setFinalPrice(i)" mdInput
+                        placeholder="Discount"> = <input #final [(ngModel)]="item.netAmount" name="final{{i}}" mdInput
+                        placeholder="Final Price">
+                    <i class="topbar-icon material-icons icon" (click)='delete(i)'>delete</i>
                 </div>
             </ng-template>
         </div>

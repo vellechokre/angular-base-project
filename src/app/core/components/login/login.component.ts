@@ -7,6 +7,7 @@ import { GetBranches } from '../../../product/services/get-branches.service';
 import { AuthenticateService } from '../../../product/services/authenticate.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/Auth.service';
+import { AlertService } from '../../services/Alert.service';
 
 @Component({
     selector: 'app-login',
@@ -29,17 +30,16 @@ export class LoginComponent implements OnInit {
         private getBranches: GetBranches,
         private authenticateService: AuthenticateService,
         public router: Router,
-        private authService: AuthService
+        private authService: AuthService,
+        private alertService: AlertService
     ) {
     }
 
     ngOnInit() {
-        this.getClinic.get()
-        .subscribe((response) => {
+        this.getClinic.get().subscribe((response) => {
             if(response) this.clinics = response.data;
             this.filteredClinics = [...this.clinics]
         })
-
     }
 
     onFilterClinic(event) {
@@ -83,7 +83,10 @@ export class LoginComponent implements OnInit {
         this.authenticateService.create(requestBody).
         subscribe((response) => {
            if(response && response.token) localStorage.setItem('token', response.token);
+           this.alertService.success('Login Successfully', 'Login Successfully');
             this.router.navigate(['/dashboard']);
+        }, (error) => {
+            this.alertService.error('Login Failed', JSON.parse(error.error).message);
         })
     }
 

@@ -35,8 +35,7 @@ export class ScheduleAppointmentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.patientService.get()
-    .subscribe((response) => {
+    this.patientService.get().subscribe((response) => {
       if (response) this.patients = response['_embedded']['patients']
     })
   }

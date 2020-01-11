@@ -4,6 +4,8 @@ import { VisitDetails } from '../../../modals/visit-details';
 import { PaymentDetail } from '../../../modals/payment-details';
 import { RecortVisit } from '../../../modals/record-visit';
 import { Http } from '@angular/http';
+import { TreatmentTypesService } from '../../../services/treatmenttypes.service';
+import { TreatmentCategoriesService } from '../../../services/treatmentCategories';
 @Component({
   selector: 'app-record-visit-detail',
   templateUrl: './record-visit-detail.component.html',
@@ -33,72 +35,50 @@ export class RecordVisitDetailComponent implements OnInit {
 
   @Input() patient: any;
   
-  items: Object[] = [
-    {
-      id: 1,
-      title: 'General',
-    },
-    {
-      id: 2,
-      title: 'Extraction',
-    },
-    {
-      id: 3,
-      title: 'Restoration',
-    },
-    {
-      id: 4,
-      title: 'Endodontics',
-    },
-    {
-      id: 5,
-      title: 'Periodontist',
-    },
-    {
-      id: 6,
-      title: 'Dentaures',
-    },
-    
-    {
-      id: 7,
-      title: 'FPD',
-    },
-    {
-      id: 8,
-      title: 'Implant',
-    },
-    {
-      id: 9,
-      title: 'Other',
-    },
-    /*{
-      id: 10,
-      title: 'Extra',
-    }*/
-  ];
-
+  items: Object[] 
+  
   constructor(
-    private http: Http
+    private http: Http,
+    private treatmentTypesService: TreatmentTypesService,
+    private treatmentCategoriesService: TreatmentCategoriesService
   ) { }
 
   ngOnInit() {
+    this.treatmentTypesService.get(null, '/all').subscribe((response) => {
+      this.items = response['data']
+    })
   }
 
   category(item) {
     this.visitDetail = new VisitDetails();
     this.visitDetail.patient = this.patientDetail;
-    this.visitDetail.category = item.title;
-    this.http.get("/assets/" + item.id + ".json")
-      .subscribe((data) => {
-        this.subcategories = data.json()['general']
-      })
+    this.visitDetail.category = item.description;
+    this.treatmentCategoriesService.get(null, `/${item.id}`).subscribe((response) => {
+      this.subcategories = [];
+      this.subcategories = response['data'];
+    })
   }
 
   subcategory(subitem) {
     this.visitDetail = new VisitDetails();
-    this.visitDetail.subcategory = subitem.name;
+    this.visitDetail.subcategory = subitem.description;
     this.visitDetail.patient = this.patientDetail;
     this.visitDetails.push(this.visitDetail);
 
+  }
+
+  delete(i: number) {
+    this.visitDetails.splice(i, 1)
+  }
+
+  setFinalPrice(i) {
+    this.netPrice = this.visitDetails[i].amount - this.visitDetails[i].discount;
+    this.addPrice(i, this.visitDetails[i].amount, this.visitDetails[i].discount, this.netPrice);
+  }
+
+  addPrice(i, price, discount, final) {
+    this.visitDetails[i].amount = price;
+    this.visitDetails[i].discount = discount;
+    this.visitDetails[i].netAmount = final;
   }
 }

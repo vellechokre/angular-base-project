@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientDetail } from '../../../modals/patient';
+import { TreatmentTypesService } from '../../../services/treatmenttypes.service';
 
 @Component({
   selector: 'app-record-visit',
@@ -10,7 +11,8 @@ export class RecordVisitComponent implements OnInit {
 
   patient: any;
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit() {
   }
