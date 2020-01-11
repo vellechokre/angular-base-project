@@ -72,6 +72,7 @@ import {ToolbarModule} from 'primeng/primeng';
 import {TooltipModule} from 'primeng/primeng';
 import {TreeModule} from 'primeng/primeng';
 import {TreeTableModule} from 'primeng/primeng';
+import { ProgressSpinnerModule } from 'primeng/primeng';
 
 import {AppComponent} from './app.component';
 import {AppMenuComponent, AppSubMenuComponent} from './core/components/menu/app.menu.component';
@@ -121,6 +122,8 @@ import { TreatmentTypesService } from './product/services/treatmenttypes.service
 import { AlertComponent } from './core/components/alert/alert.component';
 import { AlertService } from './core/services/Alert.service';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { LoaderComponent } from './core/components/loader/loader.component';
+import { LoaderModule } from './core/components/loader/loader.module';
 
 @NgModule({
     imports: [
@@ -194,7 +197,9 @@ import { MessageService } from 'primeng/components/common/messageservice';
         TreeModule,
         TreeTableModule,
         HttpClientModule,
-        AppRoutingModule
+        AppRoutingModule,
+        ProgressSpinnerModule,
+        LoaderModule
     ],
     declarations: [
         AppComponent,
@@ -222,7 +227,7 @@ import { MessageService } from 'primeng/components/common/messageservice';
         QuickAddPatientComponent,
         ScheduleAppointmentComponent,
         CalendarComponent,
-        AlertComponent
+        AlertComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

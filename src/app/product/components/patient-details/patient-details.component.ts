@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CountriesService } from '../../services/countries.service';
 import { StatesService } from '../../services/states.service';
 import { CitiesService } from '../../services/cities.service';
+import { AlertService } from '../../../core/services/Alert.service';
 @Component({
   selector: 'app-patient-details',
   templateUrl: './patient-details.component.html',
@@ -46,7 +47,7 @@ export class PatientDetailsComponent implements OnInit {
 
   private patientId: string;
   
-  loading:boolean = false;
+  isLoading: boolean = false;
 
 
   genders = [
@@ -83,6 +84,7 @@ export class PatientDetailsComponent implements OnInit {
     private stateService: StatesService,
     private citiesService: CitiesService,
     public router: Router,
+    private alertService: AlertService
   ) { 
 
   }
@@ -137,12 +139,19 @@ export class PatientDetailsComponent implements OnInit {
   }
 
   savePatientDetails() {
+    this.isLoading = true;
     this.patientData.patientDetail = this.patient;
     this.patientData.addressDetail = this.address && this.address.street? this.address: null;
     this.patientData.appointmentDetail = this.appointmentDetails;
 
     this.patientService.create(this.patientData, null,'/save').subscribe((response) => {
-      if(response) this.router.navigate(['/patient']);
+      if(response) {
+        this.isLoading = false;
+        this.router.navigate(['/patient']);
+        this.alertService.success('Patient Add', 'Patient Added Successfully');
+      }
+    }, (error) => {
+      this.alertService.error('Patient Add Failed', JSON.parse(error.error).message);
     })
   }
 }

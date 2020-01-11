@@ -6,6 +6,8 @@ import { ConsultantDetails } from '../../modals/consultant';
 import { PatientData } from '../../modals/patientdata';
 import { PatientService } from '../../services/patient.service';
 import { Router } from '@angular/router';
+import { AppComponent } from '../../../app.component';
+import { AlertService } from '../../../core/services/Alert.service';
 
 @Component({
   selector: 'app-quick-add-patient',
@@ -18,6 +20,7 @@ export class QuickAddPatientComponent implements OnInit {
   address: Address = new Address();
   patientData: PatientData = new PatientData();
   appointmentDetails: AppointmentDetails = new AppointmentDetails();
+  isLoading: boolean = false;
 
   genders = [
     { value: '', label: 'Gender' },
@@ -28,7 +31,9 @@ export class QuickAddPatientComponent implements OnInit {
   
   constructor(
     private patientService: PatientService,
-    private router: Router
+    private router: Router,
+    public app: AppComponent,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -36,17 +41,24 @@ export class QuickAddPatientComponent implements OnInit {
   }
 
   savePatient() {
+    this.isLoading = true;
     this.patientData.patientDetail = this.patient;
     this.patientData.addressDetail = this.address;
     this.patientService.create(this.patientData,null, '/save')
-      .subscribe((response) => {
+      .subscribe  ((response) => {
         this.patient = new PatientDetail();
         this.address = new Address();
         this.cancel()
-      });
+        this.isLoading = false;
+        this.alertService.success('Patient Add', 'Patient Added Successfully');
+      }, (error) => {
+          this.alertService.error('Patient Add Failed', JSON.parse(error.error).message);
+        }
+      );
   }
 
   cancel() {
-    this.router.navigate(['/patient'])
+    this.app.rightPanelClick = true;
+    this.app.rightPanelActive = !this.app.rightPanelActive;
   }
 }

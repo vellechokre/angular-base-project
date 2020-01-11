@@ -4,6 +4,8 @@ import { AppointmentDetails } from '../../modals/appointment';
 import { Router } from '@angular/router';
 import { PatientService } from '../../services/patient.service';
 import { AppointmentService } from '../../services/appointment.service';
+import { AppComponent } from '../../../app.component';
+import { AlertService } from '../../../core/services/Alert.service';
 @Component({
   selector: 'app-schedule-appointment',
   templateUrl: './schedule-appointment.component.html',
@@ -26,12 +28,14 @@ export class ScheduleAppointmentComponent implements OnInit {
   
   appointment: AppointmentDetails = new AppointmentDetails();
 
-  loading: boolean = false;
+  isLoading: boolean = false;
 
   constructor(
     private router: Router,
     private patientService: PatientService,
-    private appointmentService: AppointmentService
+    private appointmentService: AppointmentService,
+    public app: AppComponent,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -70,12 +74,17 @@ export class ScheduleAppointmentComponent implements OnInit {
   }
 
   saveAppointment() {
+    this.isLoading = true;
     this.appointmentService.create(this.appointment, null, '/save').subscribe((response) => {
       if(response) {
         this.appointment = new AppointmentDetails();
-        this.router.navigate(['/patient']);
-        this.display = false;
+        this.app.rightPanelClick = true;
+        this.app.rightPanelActive = !this.app.rightPanelActive;
+        this.isLoading = false;
+        this.alertService.success('Appointment Add', 'Appointment Added Successfully');
       };
+    }, (error) => {
+      this.alertService.error('Appointment Add Failed', JSON.parse(error.error).message);
     })
   }
 

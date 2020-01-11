@@ -10,6 +10,8 @@ import { AccordionModule, AutoCompleteModule, BreadcrumbModule, ButtonModule, Ca
 import { HttpClientModule } from '@angular/common/http';
 import { PatientGridComponent } from './patient-grid/patient-grid.component';
 import { PendingAmountPatientGrid } from './pending-amount-patient-grid/pending-amount-patient-grid.component';
+import { LoaderComponent } from '../../../core/components/loader/loader.component';
+import { LoaderModule } from '../../../core/components/loader/loader.module';
 
 const routes: Routes = [
   {
@@ -30,7 +32,7 @@ const routes: Routes = [
     PatientComponent,
     PatientDetailsComponent,
     PatientGridComponent,
-    PendingAmountPatientGrid
+    PendingAmountPatientGrid,
   ],
   imports: [
     FormsModule,
@@ -59,7 +61,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     DataTableModule,
     MenubarModule,
-    DialogModule
+    DialogModule,
+    LoaderModule
   ],
   exports: [
     RouterModule
