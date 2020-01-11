@@ -34,7 +34,7 @@
 
 <p-dialog header="Pending Amount Patients" [(visible)]="displayPendingAmountPatientGrid" [width]="1200" [height]="800" [modal]="true"
     (onHide)="onDialogClose()" [styleClass]="'pending-amount-patient-grid'">
-    <app-pending-amount-patient-grid></app-pending-amount-patient-grid>
+    <app-pending-amount-patient-grid *ngIf="displayPendingAmountPatientGrid"></app-pending-amount-patient-grid>
 </p-dialog>
 
 <!-- <p-dialog header="Send SMS" [(visible)]="displaySms" [width]="600" [modal]="true" (onHide)="onDialogClose()">
