@@ -84,7 +84,7 @@ export class LoginComponent implements OnInit {
         subscribe((response) => {
            if(response && response.token) localStorage.setItem('token', response.token);
            this.alertService.success('Login Successfully', 'Login Successfully');
-            this.router.navigate(['/dashboard']);
+           this.router.navigate(['/calendar']);
         }, (error) => {
             this.alertService.error('Login Failed', JSON.parse(error.error).message);
         })
