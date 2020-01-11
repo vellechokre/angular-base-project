@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PatientService } from '../../../services/patient.service';
 
 @Component({
   selector: 'app-pending-amount-patient-grid',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PendingAmountPatientGrid implements OnInit {
 
-  constructor() { }
+  pendingPatientList: any[];
+
+  constructor( private patientService: PatientService) { }
 
   ngOnInit() {
+    this.getPatientWithPendingAmount();
+  }
+
+  getPatientWithPendingAmount(){
+    this.patientService.get(null,'/getPatientWithPendingAmount')
+    .subscribe((response) => {
+      if (response) this.pendingPatientList = response['data'];
+    })
   }
 
 }
