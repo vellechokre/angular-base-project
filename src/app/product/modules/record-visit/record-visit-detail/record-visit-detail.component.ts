@@ -37,7 +37,9 @@ export class RecordVisitDetailComponent implements OnInit {
 
   @Input() patient: any;
   
-  items: Object[] 
+  items: Object[];
+
+  isLoading: boolean = false;
   
   constructor(
     private http: Http,
@@ -87,21 +89,29 @@ export class RecordVisitDetailComponent implements OnInit {
   }
 
   saveVisit(){
+    this.isLoading = true;
     this.recordVisit.patientDetail = this.patient;
     this.recordVisit.visitDetails = this.visitDetails;
+
     if(!this.patient){
       this.alertService.error('Validation Failed', 'Please select patient first !!!');
+      this.isLoading = false;
       return;
     }
+
     if(!this.visitDetails){
       this.alertService.error('Validation Failed', 'Please select treatment with price first !!!');
+      this.isLoading = false;
       return;
     }
+
     this.recordVisitService.create(this.recordVisit, null, '/save').subscribe((response) => {
       this.alertService.success('Data saved Successfully', 'Data saved Successfully');
+      this.isLoading = false;
       // this.router.navigate(['/calendar']);
-   }, (error) => {
-       this.alertService.error('Login Failed', JSON.parse(error.error).message);
-   })
+      }, (error) => {
+          this.isLoading = false;
+          this.alertService.error('Login Failed', JSON.parse(error.error).message);
+      })
   }
 }
