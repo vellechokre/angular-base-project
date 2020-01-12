@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RecordVisitComponent } from './record-visit/record-visit.component';
 import { RecordVisitDetailComponent } from './record-visit-detail/record-visit-detail.component';
 import { RecordVisitSearchComponent } from './record-visit-search/record-visit-search.component';
+import { LoaderModule } from '../../../core/components/loader/loader.module';
 
 const routes: Routes = [
   {
@@ -49,7 +50,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     DataTableModule,
     MenubarModule,
-    DialogModule
+    DialogModule,
+    LoaderModule
   ],
   exports: [
     RouterModule
