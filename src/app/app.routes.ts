@@ -17,6 +17,8 @@ import {DocumentationComponent} from './demo/view/documentation.component';
 import { AuthGuardService } from './core/services/auth/AuthGuard.service';
 import { LoginComponent } from './core/components/login/login.component';
 import { CalendarComponent } from './product/components/calendar/calendar.component';
+import { TreatmentsComponent } from './product/components/treatments/treatments.component';
+import { TreatmentCategoriesComponent } from './product/components/treatment-categories/treatment-categories.component';
 
 export const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -37,6 +39,8 @@ export const routes: Routes = [
     {path: 'calendar', component: CalendarComponent, canActivate: [AuthGuardService]},
     { path: 'patient', loadChildren: './product/modules/Patient/patient.module#PatientModule', canActivate: [AuthGuardService]},
     { path: 'record-visit', loadChildren: './product/modules/record-visit/record-visit.module#RecordVisitModule', canActivate: [AuthGuardService]},
+    { path: 'treatments', component: TreatmentsComponent, canActivate: [AuthGuardService]},
+    { path: 'treatmentCategories', component: TreatmentCategoriesComponent, canActivate: [AuthGuardService]},
     {path: '', pathMatch:'full' , redirectTo:'/calendar'},
 ];
 

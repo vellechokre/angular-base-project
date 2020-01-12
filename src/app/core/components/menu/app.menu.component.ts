@@ -23,6 +23,19 @@ export class AppMenuComponent implements OnInit {
             {label: 'Calendar', icon: 'list', routerLink: ['/calendar']},
             {label: 'Patient', icon: 'person', routerLink: ['/patient']},
             {label: 'Record Visit', icon: 'list', routerLink: ['/record-visit']},
+            {
+                label: 'Master Data', icon: 'menu',
+                items: [
+                    {
+                        label: 'Treatments', icon: 'subject', routerLink: ['/treatments']
+                        
+                    },
+                    {
+                        label: 'Treatment Categories', icon: 'subject', routerLink: ['/treatmentCategories']
+                        
+                    }
+                ]
+            },
         ];
     }
 }

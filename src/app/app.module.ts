@@ -124,6 +124,8 @@ import { AlertService } from './core/services/Alert.service';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { LoaderModule } from './core/components/loader/loader.module';
 import { RecordVisitService } from './product/services/record-visit.service';
+import { TreatmentsComponent } from './product/components/treatments/treatments.component';
+import { TreatmentCategoriesComponent } from './product/components/treatment-categories/treatment-categories.component';
 
 @NgModule({
     imports: [
@@ -228,6 +230,8 @@ import { RecordVisitService } from './product/services/record-visit.service';
         ScheduleAppointmentComponent,
         CalendarComponent,
         AlertComponent,
+        TreatmentsComponent,
+        TreatmentCategoriesComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
