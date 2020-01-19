@@ -8,6 +8,7 @@ import { AuthenticateService } from '../../../product/services/authenticate.serv
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/Auth.service';
 import { AlertService } from '../../services/Alert.service';
+import { ApplicationContant } from '../../modals/app.constant';
 
 @Component({
     selector: 'app-login',
@@ -84,7 +85,7 @@ export class LoginComponent implements OnInit {
         subscribe((response) => {
            if(response && response.token) localStorage.setItem('token', response.token);
            this.alertService.success('Login Successfully', 'Login Successfully');
-           this.router.navigate(['/calendar']);
+           this.router.navigate([ApplicationContant.HOME_URL]);
         }, (error) => {
             this.alertService.error('Login Failed', JSON.parse(error.error).message);
         })
