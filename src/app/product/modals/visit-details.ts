@@ -4,7 +4,7 @@ import { BaseObjectWithIdAndBranchId } from "./baseobjectwithidandbranchid";
 export class VisitDetails extends BaseObjectWithIdAndBranchId{
     patient: PatientDetail;
     category: string;
-    subcategory: string;
+    subCategory: string;
     amount: number;
     discount:number;
     netAmount:number;
