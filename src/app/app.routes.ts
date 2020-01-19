@@ -1,6 +1,6 @@
 import {Routes, RouterModule} from '@angular/router';
 import {ModuleWithProviders, NgModule} from '@angular/core';
-import {DashboardDemoComponent} from './demo/view/dashboarddemo.component';
+import {DashboardDemoComponent} from './product/modules/dashboard/dashboarddemo.component';
 import {SampleDemoComponent} from './demo/view/sampledemo.component';
 import {FormsDemoComponent} from './demo/view/formsdemo.component';
 import {DataDemoComponent} from './demo/view/datademo.component';
@@ -19,6 +19,7 @@ import { LoginComponent } from './core/components/login/login.component';
 import { CalendarComponent } from './product/components/calendar/calendar.component';
 import { TreatmentsComponent } from './product/components/treatments/treatments.component';
 import { TreatmentCategoriesComponent } from './product/components/treatment-categories/treatment-categories.component';
+import { ApplicationContant } from './core/modals/app.constant';
 
 export const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -41,7 +42,7 @@ export const routes: Routes = [
     { path: 'record-visit', loadChildren: './product/modules/record-visit/record-visit.module#RecordVisitModule', canActivate: [AuthGuardService]},
     { path: 'treatments', component: TreatmentsComponent, canActivate: [AuthGuardService]},
     { path: 'treatmentCategories', component: TreatmentCategoriesComponent, canActivate: [AuthGuardService]},
-    {path: '', pathMatch:'full' , redirectTo:'/calendar'},
+    {path: '', pathMatch:'full' , redirectTo: ApplicationContant.HOME_URL},
 ];
 
 @NgModule({

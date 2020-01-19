@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {CarService} from '../service/carservice';
-import {EventService} from '../service/eventservice';
-import {Car} from '../domain/car';
+import {CarService} from '../../../demo/service/carservice';
+import {EventService} from '../../../demo/service/eventservice';
+import {Car} from '../../../demo/domain/car';
 import {SelectItem} from 'primeng/primeng';
+import { AppointmentService } from '../../services/appointment.service';
 
 @Component({
     templateUrl: './dashboard.component.html'
@@ -19,12 +20,12 @@ export class DashboardDemoComponent implements OnInit {
 
     selectedCity: any;
 
-    constructor(private carService: CarService, private eventService: EventService) { }
+    constructor(private carService: CarService, private appointmentService: AppointmentService) { }
 
     ngOnInit() {
         this.carService.getCarsSmall().then(cars => this.cars = cars);
 
-        this.eventService.getEvents().then(events => {this.events = events; });
+        // this.eventService.getEvents().then(events => {this.events = events; });
 
         this.cities = [];
         this.cities.push({label: 'Select City', value: null});

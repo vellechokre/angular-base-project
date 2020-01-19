@@ -80,7 +80,7 @@ import {AppTopbarComponent} from './core/components/topbar/app.topbar.component'
 import {AppFooterComponent} from './core/components/footer/app.footer.component';
 import {AppRightpanelComponent} from './core/components/rightpanel/app.rightpanel.component';
 import {AppInlineProfileComponent} from './core/components/profile/app.profile.component';
-import {DashboardDemoComponent} from './demo/view/dashboarddemo.component';
+import {DashboardDemoComponent} from './product/modules/dashboard/dashboarddemo.component';
 import {SampleDemoComponent} from './demo/view/sampledemo.component';
 import {FormsDemoComponent} from './demo/view/formsdemo.component';
 import {DataDemoComponent} from './demo/view/datademo.component';
