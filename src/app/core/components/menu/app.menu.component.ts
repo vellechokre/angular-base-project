@@ -22,7 +22,20 @@ export class AppMenuComponent implements OnInit {
             {label: 'Dashboard', icon: 'dashboard', routerLink: ['/']},
             {label: 'Calendar', icon: 'list', routerLink: ['/calendar']},
             {label: 'Patient', icon: 'person', routerLink: ['/patient']},
-            {label: 'Record Visit', icon: 'list', routerLink: ['/record-visit']},
+            // {label: 'Record Visit', icon: 'list', routerLink: ['/record-visit']},
+            {
+                label: 'Record Visit', icon: 'list',
+                items: [
+                    {
+                        label: 'Add Record Visit', icon: 'add', routerLink: ['/record-visit']
+                        
+                    },
+                    {
+                        label: 'Record Visits', icon: 'list', routerLink: ['/record-visits']
+                        
+                    }
+                ]
+            },
             {
                 label: 'Master Data', icon: 'menu',
                 items: [

@@ -1,6 +1,9 @@
 <app-loader *ngIf="isLoading"></app-loader>
 <div class="app-treatment">
     <div class="treatment-action-buttons">
+        <h3>
+            Treatments
+        </h3>
         <button pButton label="Add Treatment" (click)="addTreatment()"></button>
     </div>
     <p-dataTable [value]="treatments" [rows]="20" [(selection)]="selectedTreatments" [loading]="loader"

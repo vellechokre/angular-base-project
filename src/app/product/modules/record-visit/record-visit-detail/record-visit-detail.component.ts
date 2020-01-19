@@ -36,6 +36,8 @@ export class RecordVisitDetailComponent implements OnInit {
   patientId: number;
 
   @Input() patient: any;
+
+  @Input() recordVisits: any;
   
   items: Object[];
 

@@ -1,7 +1,8 @@
 .treatment-action-buttons {
     display: flex;
-    justify-content: flex-end;
-    margin-bottom: 8px;
+    justify-content: space-between;
+    align-items: center;
+    // margin-bottom: 8px;
     button {
         padding: 0 8px!important;
     }

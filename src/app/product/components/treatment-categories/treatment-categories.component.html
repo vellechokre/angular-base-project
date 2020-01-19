@@ -1,5 +1,9 @@
 <div class="app-treatment">
+   
     <div class="treatment-action-buttons">
+        <h3>
+            Treatment Categories
+        </h3>
         <button pButton label="Add Treatment Categrory" (click)="addTreatmentCategory()"></button>
     </div>
 <p-dataTable [value]="treatmentCategories" [rows]="20" [(selection)]="selectedTreatments" [loading]="loader"

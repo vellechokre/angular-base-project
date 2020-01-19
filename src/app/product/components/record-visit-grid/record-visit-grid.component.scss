@@ -1,8 +1,11 @@
 .patient-action-buttons {
     display: flex;
     justify-content: space-between;
-    // margin-bottom: 8px;
+    // margin-bottom: 5px;
     align-items: center;
+    .heading {
+        margin-left: 4px
+    }
     button {
         padding: 0 8px!important;
     }
