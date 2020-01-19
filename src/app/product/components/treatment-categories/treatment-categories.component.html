@@ -5,15 +5,17 @@
 <p-dataTable [value]="treatmentCategories" [rows]="20" [(selection)]="selectedTreatments" [loading]="loader"
         [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [responsive]="true" #dt>
         <!-- <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column> -->
-        <p-column field="id" header="ID" [filter]="true" filterPlaceholder="Search">
+        <!-- <p-column field="id" header="ID" [filter]="true" filterPlaceholder="Search">
+        </p-column> -->
+        <p-column field="treatmentType.description" header="Treatment Type" [filter]="true" filterPlaceholder="Search">
         </p-column>
-        <p-column field="description" header="Description" [filter]="true" filterPlaceholder="Search">
+        <p-column field="description" header="Name" [filter]="true" filterPlaceholder="Search">
         </p-column>
         <p-column styleClass="col-button">
             <ng-template let-category="rowData" pTemplate="body">
                 <!-- <button type="button" pButton (click)="editPatient(patient)" label="Edit"></button> -->
                 <div class='flex-center'>
-                    <i class="fa ui-icon-edit cursor-pointer" (click)="editTreamentCategory(treatment)"></i>
+                    <i class="fa ui-icon-edit cursor-pointer" (click)="editTreamentCategory(category)"></i>
                 </div>
                
             </ng-template>
@@ -21,12 +23,15 @@
     </p-dataTable>
 </div>
 
-<p-dialog header="Add Treatment Category" width="300" height="180" [(visible)]="display">
+<p-dialog header="Add Treatment Category" width="300" height="225" [(visible)]="display">
     <form #treatmentForm="ngForm">
         <div class="ui-g input-field-top-padding">
+            <div class="ui-g-12 ui-lg-12 ui-md-12  ui-fluid">
+                <p-dropdown name="treatmentype" [autoWidth]="false" appendTo="body" [options]="treatmentTypes" (ngModelChange)="treatmentCategory.treatmentType =  $event" [ngModel]="treatmentCategory?.treatmentType" placeholder="Select a Treatment *" optionLabel="description" required></p-dropdown>
+            </div>
             <div class="ui-g-12 ui-lg-12 ui-md-12  ui-fluid inputfield">
               <span class="md-inputfield">
-                 <input id="description" type="text" pInputText name="description"  #firstname="ngModel" tooltipEvent="focus"  [(ngModel)]="description" required/>
+                 <input id="description" type="text" pInputText name="description"  #firstname="ngModel" tooltipEvent="focus" (ngModelChange)="treatmentCategory.description = $event" [ngModel]="treatmentCategory?.description" required/>
                  <label for="description">Description *</label>
              </span>
             </div>
