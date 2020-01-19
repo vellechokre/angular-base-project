@@ -1,12 +1,13 @@
+<app-loader *ngIf="isLoading"></app-loader>
 <div class="app-treatment">
     <div class="treatment-action-buttons">
         <button pButton label="Add Treatment" (click)="addTreatment()"></button>
     </div>
-<p-dataTable [value]="treatments" [rows]="20" [(selection)]="selectedTreatments" [loading]="loader"
+    <p-dataTable [value]="treatments" [rows]="20" [(selection)]="selectedTreatments" [loading]="loader"
         [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [responsive]="true" #dt>
         <!-- <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column> -->
-        <p-column field="id" header="ID" [filter]="true" filterPlaceholder="Search">
-        </p-column>
+        <!-- <p-column field="id" header="ID" [filter]="true" filterPlaceholder="Search">
+        </p-column> -->
         <p-column field="description" header="Description" [filter]="true" filterPlaceholder="Search">
         </p-column>
         <p-column styleClass="col-button">
@@ -26,8 +27,8 @@
         <div class="ui-g input-field-top-padding">
             <div class="ui-g-12 ui-lg-12 ui-md-12  ui-fluid inputfield">
               <span class="md-inputfield">
-                 <input id="description" type="text" pInputText name="description"  #firstname="ngModel" tooltipEvent="focus"  [(ngModel)]="description" required/>
-                 <label for="description">Description *</label>
+                 <input id="description" type="text" pInputText name="description"  #firstname="ngModel" tooltipEvent="focus"  [(ngModel)]="treatmentType.description" required/>
+                 <label for="description">Name *</label>
              </span>
             </div>
         </div>
