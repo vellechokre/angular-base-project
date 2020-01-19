@@ -18,10 +18,6 @@ import {AppComponent} from '../../../app.component';
                     <i class="material-icons">more_vert</i>
                 </a>
 
-                <a id="topbar-menu-button" href="#" (click)="app.onTopbarMenuButtonClick($event)">
-                    <i class="material-icons">menu</i>
-                </a>
-
                 <a id="rightpanel-menu-button" href="#" (click)="app.onLogoutClick($event)">
                 <i class="material-icons">power_settings_new</i>
                 </a>

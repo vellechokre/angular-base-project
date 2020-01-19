@@ -20,6 +20,7 @@ import { CalendarComponent } from './product/components/calendar/calendar.compon
 import { TreatmentsComponent } from './product/components/treatments/treatments.component';
 import { TreatmentCategoriesComponent } from './product/components/treatment-categories/treatment-categories.component';
 import { ApplicationContant } from './core/modals/app.constant';
+import { RecordVisitGridComponent } from './product/components/record-visit-grid/record-visit-grid.component';
 
 export const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -40,6 +41,7 @@ export const routes: Routes = [
     {path: 'calendar', component: CalendarComponent, canActivate: [AuthGuardService]},
     { path: 'patient', loadChildren: './product/modules/Patient/patient.module#PatientModule', canActivate: [AuthGuardService]},
     { path: 'record-visit', loadChildren: './product/modules/record-visit/record-visit.module#RecordVisitModule', canActivate: [AuthGuardService]},
+    { path: 'record-visits', component: RecordVisitGridComponent, canActivate: [AuthGuardService]},
     { path: 'treatments', component: TreatmentsComponent, canActivate: [AuthGuardService]},
     { path: 'treatmentCategories', component: TreatmentCategoriesComponent, canActivate: [AuthGuardService]},
     {path: '', pathMatch:'full' , redirectTo: ApplicationContant.HOME_URL},

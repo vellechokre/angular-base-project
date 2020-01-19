@@ -127,6 +127,7 @@ import { RecordVisitService } from './product/services/record-visit.service';
 import { TreatmentsComponent } from './product/components/treatments/treatments.component';
 import { TreatmentCategoriesComponent } from './product/components/treatment-categories/treatment-categories.component';
 import { DashboardService } from './product/services/dashboard.service';
+import { RecordVisitGridComponent } from './product/components/record-visit-grid/record-visit-grid.component';
 
 @NgModule({
     imports: [
@@ -232,7 +233,8 @@ import { DashboardService } from './product/services/dashboard.service';
         CalendarComponent,
         AlertComponent,
         TreatmentsComponent,
-        TreatmentCategoriesComponent
+        TreatmentCategoriesComponent,
+        RecordVisitGridComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

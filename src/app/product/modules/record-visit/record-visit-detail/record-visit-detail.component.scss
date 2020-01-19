@@ -5,27 +5,43 @@
     justify-content: space-between;
     background: #fff;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    // padding: 0 16px;
     margin-left: 8px;
     margin-right: 8px;
+    &-wrapper {
+        margin: 8px;
+        flex-basis: 250px;
+    }
     &-container {
         display: flex;
         flex-grow: 1;
         border-right:1px solid #e7e2e2;
         &-header {
-            padding: 8px;
+            padding: 5px;
             color: black;
             font-weight: 500;
         }
         &-data {
-            padding: 8px;
+            padding: 5px;
             font-size: 14px;
             color: #635d5d;
             font-weight: 600;
 
         }
     }
+    &-record-visit {
+        flex-grow: 1;
+        margin: 8px;
+    }
 }
+
+table, th, td {
+    border: 1px solid #e7e2e2;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 5px;
+    text-align: left;
+  }
 
 .patient-visit {
     display: flex;

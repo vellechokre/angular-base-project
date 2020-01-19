@@ -17,7 +17,9 @@ export class DashboardDemoComponent implements OnInit {
 
     appointmentCounts: number = 0;
 
-    patientByTreatment: any;
+    patientByTreatments: any[] = [];
+
+    colors: any[] = ['#ffc107', '#673AB7', '#00bcd4', '#607D8B', '#FF5722']
     
     constructor(
         private dashboardService: DashboardService
@@ -50,7 +52,11 @@ export class DashboardDemoComponent implements OnInit {
 
     getPatientByTreatmentType() {
         this.dashboardService.get(null, '/patient-by-treatmentType').subscribe((response) => {
-            if(response) this.patientByTreatment = response['data'];
+            if(response) this.patientByTreatments = response['data'];
         })
+    }
+
+    getColor(i): string {
+        return this.colors[i]
     }
 }
