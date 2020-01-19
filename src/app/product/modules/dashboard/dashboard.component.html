@@ -2,9 +2,9 @@
     <div class="ui-g-12 ui-md-4">
         <div class="card overview">
             <div class="overview-content clearfix">
-                <span class="overview-title">Sales</span>
-                <span class="overview-badge">+%90</span>
-                <span class="overview-detail">$22,650 / week</span>
+                <span class="overview-title">Patients</span>
+                <!-- <span class="overview-badge">+%90</span> -->
+                <span class="overview-detail">{{totalPatientsVisisted}} / Till Date</span>
             </div>
             <div class="overview-footer">
                 <img src="assets/layout/images/dashboard/sales.svg" style="width: 100%" />
@@ -14,9 +14,9 @@
     <div class="ui-g-12 ui-md-4">
         <div class="card overview">
             <div class="overview-content clearfix">
-                <span class="overview-title">Views</span>
-                <span class="overview-badge">+%60</span>
-                <span class="overview-detail">6,520 / day</span>
+                <span class="overview-title">Patients</span>
+                <!-- <span class="overview-badge">{{patientLastWeekCount}}</span> -->
+                <span class="overview-detail">{{patientLastWeekCount}} / Last Week</span>
             </div>
             <div class="overview-footer">
                 <img src="assets/layout/images/dashboard/views.svg" style="width: 100%" />
@@ -26,9 +26,9 @@
     <div class="ui-g-12 ui-md-4">
         <div class="card overview">
             <div class="overview-content clearfix">
-                <span class="overview-title">Users</span>
-                <span class="overview-badge">+%45</span>
-                <span class="overview-detail">5,200 / day</span>
+                <span class="overview-title">Appointments</span>
+                <!-- <span class="overview-badge">+%45</span> -->
+                <span class="overview-detail">{{appointmentCounts}} / Today</span>
             </div>
             <div class="overview-footer">
                 <img src="assets/layout/images/dashboard/progress.svg" style="width: 100%" />

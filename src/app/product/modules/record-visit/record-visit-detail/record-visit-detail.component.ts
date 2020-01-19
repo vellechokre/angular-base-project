@@ -68,6 +68,7 @@ export class RecordVisitDetailComponent implements OnInit {
   subcategory(subitem) {
     this.visitDetail = new VisitDetails();
     this.visitDetail.subcategory = subitem.description;
+    this.visitDetail.category = subitem.treatmentType.description;
     this.visitDetail.patient = this.patientDetail;
     this.visitDetails.push(this.visitDetail);
 

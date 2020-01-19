@@ -4,53 +4,53 @@ import {EventService} from '../../../demo/service/eventservice';
 import {Car} from '../../../demo/domain/car';
 import {SelectItem} from 'primeng/primeng';
 import { AppointmentService } from '../../services/appointment.service';
+import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
     templateUrl: './dashboard.component.html'
 })
 export class DashboardDemoComponent implements OnInit {
 
-    cities: SelectItem[];
+    patientLastWeekCount: number = 0;
 
-    cars: Car[];
+    totalPatientsVisisted: number = 0;
 
-    chartData: any;
+    appointmentCounts: number = 0;
 
-    events: any[];
-
-    selectedCity: any;
-
-    constructor(private carService: CarService, private appointmentService: AppointmentService) { }
+    patientByTreatment: any;
+    
+    constructor(
+        private dashboardService: DashboardService
+    ) { }
 
     ngOnInit() {
-        this.carService.getCarsSmall().then(cars => this.cars = cars);
+        this.getPatientVisitedLastWeek();
+        this.getTotalPatients();
+        this.getTodaysAppointments();
+        this.getPatientByTreatmentType();
+    }
 
-        // this.eventService.getEvents().then(events => {this.events = events; });
+    getPatientVisitedLastWeek() {
+        this.dashboardService.get(null, '/patient-visited-week').subscribe((response) => {
+            if(response) this.patientLastWeekCount = response['data']
+        })
+    }
 
-        this.cities = [];
-        this.cities.push({label: 'Select City', value: null});
-        this.cities.push({label: 'New York', value: {id: 1, name: 'New York', code: 'NY'}});
-        this.cities.push({label: 'Rome', value: {id: 2, name: 'Rome', code: 'RM'}});
-        this.cities.push({label: 'London', value: {id: 3, name: 'London', code: 'LDN'}});
-        this.cities.push({label: 'Istanbul', value: {id: 4, name: 'Istanbul', code: 'IST'}});
-        this.cities.push({label: 'Paris', value: {id: 5, name: 'Paris', code: 'PRS'}});
+    getTotalPatients() {
+        this.dashboardService.get(null, '/total-patient-visited').subscribe((response) => {
+            if(response) this.totalPatientsVisisted = response['data']
+        })
+    }
 
-        this.chartData = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [
-                {
-                    label: 'First Dataset',
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    fill: false,
-                    borderColor: '#FFC107'
-                },
-                {
-                    label: 'Second Dataset',
-                    data: [28, 48, 40, 19, 86, 27, 90],
-                    fill: false,
-                    borderColor: '#03A9F4'
-                }
-            ]
-        };
+    getTodaysAppointments() {
+        this.dashboardService.get(null, '/todays-appointment').subscribe((response) => {
+            if(response) this.appointmentCounts = response['data'].length;
+        })
+    }
+
+    getPatientByTreatmentType() {
+        this.dashboardService.get(null, '/patient-by-treatmentType').subscribe((response) => {
+            if(response) this.patientByTreatment = response['data'];
+        })
     }
 }

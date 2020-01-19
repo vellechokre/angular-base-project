@@ -126,6 +126,7 @@ import { LoaderModule } from './core/components/loader/loader.module';
 import { RecordVisitService } from './product/services/record-visit.service';
 import { TreatmentsComponent } from './product/components/treatments/treatments.component';
 import { TreatmentCategoriesComponent } from './product/components/treatment-categories/treatment-categories.component';
+import { DashboardService } from './product/services/dashboard.service';
 
 @NgModule({
     imports: [
@@ -252,7 +253,8 @@ import { TreatmentCategoriesComponent } from './product/components/treatment-cat
         { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
         AlertService,
         MessageService,
-        RecordVisitService
+        RecordVisitService,
+        DashboardService
     ],
     bootstrap: [AppComponent]
 })
