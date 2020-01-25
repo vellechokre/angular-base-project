@@ -5,6 +5,7 @@ import * as applicationUtils from '../../../product/utils/application.utils';
 import { Branch } from '../../../product/modals/branch';
 import { GetBranches } from '../../../product/services/get-branches.service';
 import { AuthenticateService } from '../../../product/services/authenticate.service';
+import { GlService } from '../../../demo/service/glService';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/Auth.service';
 import { AlertService } from '../../services/Alert.service';
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
         private authenticateService: AuthenticateService,
         public router: Router,
         private authService: AuthService,
+        private glService: GlService,
         private alertService: AlertService
     ) {
     }
@@ -79,12 +81,12 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        const requestBody = {username: this.userName, password: this.password, clinic: this.selectedClinic, branchs: [this.selectedBranch]};
-        this.authenticateService.create(requestBody).
-        subscribe((response) => {
+        const requestBody = {username: this.userName, password: this.password};
+        this.glService.doLogin(requestBody).
+        then((response) => {
            if(response && response.token) localStorage.setItem('token', response.token);
            this.alertService.success('Login Successfully', 'Login Successfully');
-           this.router.navigate(['/calendar']);
+           this.router.navigate(['/dashboard']);
         }, (error) => {
             this.alertService.error('Login Failed', JSON.parse(error.error).message);
         })

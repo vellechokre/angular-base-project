@@ -16,4 +16,9 @@ export class GlService {
             .toPromise()
             .then(res => <any>res.json().result_set)
     }
+    doLogin(login) {
+        return this.http.post(`${this.Url}authenticate`, login)
+            .toPromise()
+            .then(res => <any>res.json().result_set)
+    }
 }
