@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {AppComponent} from '../../../app.component';
+import { Component, Input } from '@angular/core';
+import { AppComponent } from '../../../app.component';
 
 @Component({
     selector: 'app-topbar',
@@ -14,9 +14,9 @@ import {AppComponent} from '../../../app.component';
                     <i></i>
                 </a>
 
-                <a id="rightpanel-menu-button" href="#" (click)="app.onRightPanelButtonClick($event)">
+                <!--<a id="rightpanel-menu-button" href="#" (click)="app.onRightPanelButtonClick($event)">
                     <i class="material-icons">more_vert</i>
-                </a>
+                </a>-->
 
                 <a id="topbar-menu-button" href="#" (click)="app.onTopbarMenuButtonClick($event)">
                     <i class="material-icons">menu</i>
@@ -34,7 +34,7 @@ export class AppTopbarComponent {
 
     @Input() isUserAuthorized: boolean = false;
 
-    constructor(public app: AppComponent) {}
+    constructor(public app: AppComponent) { }
 
 }
 

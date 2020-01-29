@@ -83,10 +83,12 @@ export class LoginComponent implements OnInit {
     login() {
         const requestBody = {username: this.userName, password: this.password};
         this.glService.doLogin(requestBody).
-        then((response) => {
-           if(response && response.token) localStorage.setItem('token', response.token);
+        then((response) => {   
+           if(response && response.token){ 
+            localStorage.setItem('token', response.token);
            this.alertService.success('Login Successfully', 'Login Successfully');
-           this.router.navigate(['/dashboard']);
+           this.router.navigate(['dashboard']);
+        }
         }, (error) => {
             this.alertService.error('Login Failed', JSON.parse(error.error).message);
         })

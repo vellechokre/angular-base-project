@@ -1,7 +1,7 @@
 <div class="login-body">
     <div class="card login-panel ui-fluid">
         <form #loginForm="ngForm">
-            <div class="ui-g">
+            <div class="ui-g gl-stationary">
                 <!-- <div class="ui-g-12">
                     <p-autoComplete name="clinic" placeholder="Select Clinic" [forceSelection]="true" [(ngModel)]="selectedClinic" field="name" [suggestions]="filteredClinics" (completeMethod)="onFilterClinic($event)"
                     required [dropdown]="true" [minLength]="1" (onSelect)="onClinicSelection($value)"></p-autoComplete>
@@ -12,13 +12,13 @@
                 </div> -->
                 <div class="ui-g-12">
                     <span class="md-inputfield">
-                        <input  id="username" name="userName" [(ngModel)]="userName" type="text" autocomplete="off" class="ui-inputtext ui-corner-all ui-state-default ui-widget" required>
+                        <input  id="username" name="userName" pInputText [(ngModel)]="userName" type="text" autocomplete="off" class="ui-inputtext ui-corner-all ui-state-default ui-widget" required>
                         <label for="username">Username</label>
                     </span>
                 </div>
                 <div class="ui-g-12">
                     <span class="md-inputfield">
-                        <input  id="password" name="password" [(ngModel)]="password" type="password" autocomplete="off"
+                        <input  id="password" name="password" pInputText [(ngModel)]="password" type="password" autocomplete="off"
                             class="ui-inputtext ui-corner-all ui-state-default ui-widget" required>
                         <label for="password">Password</label>
                     </span>
