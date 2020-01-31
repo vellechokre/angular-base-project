@@ -20,11 +20,11 @@ export class RequestInterceptor implements HttpInterceptor {
                 headers: req.headers.set('Authorization', authToken)
               });
 
-            const finalRequest = authReq.clone({
-                headers: authReq.headers.set('x_branch_id', '1')
-            })
+            // const finalRequest = authReq.clone({
+            //     headers: authReq.headers.set('x_branch_id', '1')
+            // })
 
-            return next.handle(finalRequest);
+            return next.handle(authReq);
         }
     }
 }
