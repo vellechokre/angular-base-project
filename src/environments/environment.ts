@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://18.219.190.56:9001/'
+  baseUrl: 'https://18.219.190.56:9000/'
   //  baseUrl: 'https://localhost:9001/'
 };

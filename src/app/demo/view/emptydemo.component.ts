@@ -28,7 +28,7 @@ export class EmptyDemoComponent implements OnInit {
     display: boolean;
     itemSubCategoryListbox: SelectItem[];
 
-    constructor(private assignService: AssignService, private fb: FormBuilder) { }
+    constructor(private assignService: AssignService, private fb: FormBuilder) { debugger }
     productForm: FormGroup;
     ngOnInit() {
         this.showEmployeeDetails = false;
@@ -63,6 +63,7 @@ export class EmptyDemoComponent implements OnInit {
         return this.productForm.get('selling_points') as FormArray;
     }
     sendOtp() {
+        debugger;
         let getotpObj = this.currentEmployeeObj;
         let creatOtpObj = {
             empId: getotpObj.empID,
@@ -70,7 +71,7 @@ export class EmptyDemoComponent implements OnInit {
             phoneNo: getotpObj.phone,
             name: getotpObj.name
         }
-        this.assignService.sendOtp(creatOtpObj);
+        this.assignService.get({ empId: creatOtpObj.empId, phoneNo: creatOtpObj.phoneNo, name: creatOtpObj.name }, `/generateOtp`).subscribe();
         this.display = true;
     }
     validateOtp() {
@@ -81,7 +82,7 @@ export class EmptyDemoComponent implements OnInit {
             empId: getotpObj.empID,
             otpnum: validatedOtp
         }
-        this.assignService.validOtp(validateOtpObj).then(res => {
+        this.assignService.get({ empId: validateOtpObj.empId, otpnum: validateOtpObj.otpnum }, `/validateOtp/`).subscribe((res: any) => {
             if (res.status == 200) {
                 this.display = false;
                 this.isValidOtp = true;
@@ -105,10 +106,10 @@ export class EmptyDemoComponent implements OnInit {
         this.isValidOtp = false;
     }
     searchEmployee() {
-        this.assignService.getEmployeeData(this.enteredId).then(res => {
+        this.assignService.get(null, `/${this.enteredId}`).subscribe((res: any) => {
             if (res.status == 1) {
                 this.currentEmployee = this.enteredId; this.currentEmployeeObj = res.result_set; this.showEmployeeDetails = true; let employeeObj = this.currentEmployee;
-                this.assignService.fetchEmployeeHistory(employeeObj).then(itemList => this.itemList = itemList);
+                this.assignService.get(null, `/history/${employeeObj}`).subscribe((itemList: any) => this.itemList = itemList.result_set);
             } else {
                 alert('NotFound'); this.showEmployeeDetails = false
             }
@@ -126,10 +127,10 @@ export class EmptyDemoComponent implements OnInit {
             }
             createObj.push(newPush);
         });
-        this.assignService.saveAssignDetails(createObj).then(res => {
+        this.assignService.create(createObj, null, `/history`).subscribe((res: any) => {
             if (res.status == 1) {
                 let employeeObj = this.currentEmployee;
-                this.assignService.fetchEmployeeHistory(employeeObj).then(itemList => this.itemList = itemList);
+                this.assignService.get(null, `/history/${employeeObj}`).subscribe((itemList: any) => this.itemList = itemList);
             }
         });
     }
